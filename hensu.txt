@@ -1,0 +1,22 @@
+hatena = new Image();
+hatena.src = "hatena.gif";
+pic = new Array();
+kazu = new Array();
+
+pic_w	：	画像の横幅（５０）
+pic_h	：	画像の高さ（５０）
+hayasa	：	めくったカードが戻るまでの時間（１００以上）
+clear_dore：	ゲームクリア後に０なら小さな窓（アラート）、１なら別ページに
+clear_moji：	クリア後アラートに表示する文字
+clear_url：	クリア後飛ぶページ
+masu_h	：	縦マスの数（４）
+masu_w	：	横ますの数（５）
+	
+
+ikutu = 0;
+atari = 0;
+num = 0;
+checks = 0;
+mae = -1;
+c_moji = "";
+
