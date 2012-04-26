@@ -46,7 +46,7 @@
 	masu_w = 5;
 
 
-	pic = new Array();
+	pic = new Array();	//表画像をぶちこむリスト
 	kazu = new Array();
 	ikutu = 0;
 	atari = 0;
@@ -57,10 +57,10 @@
 	
 	//画像
 	function img_load(){
-		if(checks == 0)	{
+		if(checks == 0)	{	//checksが０なら…
 			for(i = 0; i < 10; i++)
-				document.images["hidden"].src = pic[i].src;
-			document.images["hidden"].src = hatena.src;
+				document.images["hidden"].src = pic[i].src;	//表画像をぶちこみ
+			document.images["hidden"].src = hatena.src;		//裏画像をぶちこみ
 		}
 	}
 
@@ -72,7 +72,7 @@
 		j = 0;
 		doko = 0;
 		c_moji = "";
-		num = Math.floor(masu_w * masu_h / 10 / 2);
+		num = Math.floor(masu_w * masu_h / 10 / 2);	// num = 1
 		max = 10;	
 		min = 0;	
 		ataris = new Array();
@@ -81,13 +81,13 @@
 		else {
 			while(i < num){
 				while(j < max){
-					kazu[j]=Math.floor(Math.random()*10);
+					kazu[j]=Math.floor(Math.random()*10);//０から９の１０個の乱数を作る
 					if(j == 0)
 						j++;
 					else{
 						a = min;
 						while(a < j){
-							if(kazu[a] != kazu[j])
+							if(kazu[a] != kazu[j])//kazu[a]とkazu[a+1]の中身が別のものか
 								a++;
 							else 
 								break;
@@ -109,14 +109,14 @@
 				pic[i].src = ""+kazu[i]+".gif";
 				document.images["pic"+i].src = hatena.src;
 			}
-			checks = 0;
+			checks = 0;	//デフォルト値に戻った
 		}
 	num = 0;
 	}
 
 	
 	function modosu(){
-		atari_han(mae);
+		atari_han(mae);//当たり判定に-1を渡す
 		if(i == ataris.length+1)
 			document.images["pic"+mae].src = hatena.src;
 		atari_han(tugi);
@@ -126,7 +126,7 @@
 		}
 
 	//当たり判定
-	function atari_han(doko){
+	function atari_han(doko){	//dokoは-1
 		i　=　0;
 		while(i < ataris.length+1){
 			if(ataris[i] != doko)
@@ -137,14 +137,15 @@
 	return i;
 	}
 
-	function sinkei(doko){
+	function sinkei(doko){	//dokoは-1
 		if(doko < 10)
 			dore = "0" + doko + ",";
 		else 
 			dore = doko + ",";
 		if(checks == 1 && c_moji.indexOf(dore , 0) == -1){
+								//indexOf(dore , 0)・・・【０文字目以降からdoreを探す】
 			checks = 2;
-			atari_han(doko); 
+			atari_han(doko); //当たり判定に-1を投げる
 			if(i == ataris.length+1)
 				document.images["pic"+doko].src=pic[doko].src;
 			if(ikutu == 1){
@@ -220,7 +221,7 @@
 	<input type="button" value="RESET" onClick="my_reset();">
  </form>
 
-<!-- 以上変更不可dddd -->
+<!-- 以上変更不可 -->
 
 </div>
 
