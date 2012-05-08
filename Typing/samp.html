@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <meta http-equiv="Content-Type"
+          content="text/html; charset=shift_jis">
+    <title>ÉTÉìÉvÉã 09</title>
+    <script language="javascript">
+var successful_count = 0;
+var failure_count = 0;
+var typeTargets = new Array(
+  "LOVE", "HAVE", "GO", "DO", "MAKE", "TAKE", "GIVE", "GET",
+  "SAY", "COME", "BE", "SEE", "LOOK", "KNOW", "THINK", "SEEM",
+  "LIKE", "ASK", "TALK", "SPEAK", "HEAR", "LISTEN", "USE"
+);
+
+function init() {
+  label.innerHTML = next();
+}
+
+function keyDown() {
+  var text = label.innerHTML;
+  var code = text.charCodeAt(0);
+  if (event.keyCode == code) {
+    text = text.substring(1, text.length);
+    if (text.length == 0) text = next();
+    label.innerHTML = text;
+    successful_count++;
+  }
+  else failure_count++
+
+  successful.innerHTML = successful_count;
+  failure.innerHTML = failure_count;
+}
+function next() {
+  var index = Math.round(Math.random() * (typeTargets.length - 1));
+  return typeTargets[index];
+}
+    </script>
+  </head>
+
+  <body onkeydown="keyDown()" onload="init()">
+    <table border="0" width="100%" height="100%">
+      <tr><td>ê¨å˜êî=<span id="successful">0</span>
+        , é∏îsêî=<span id="failure">0</span></td></tr>
+      <tr><th height="100%"><font size="7"><p id="label"></p>
+      </font></th></tr>
+    </table>
+  </body>
+</html>
