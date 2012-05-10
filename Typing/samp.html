@@ -4,40 +4,43 @@
           content="text/html; charset=shift_jis">
     <title>サンプル 09</title>
     <script language="javascript">
-var successful_count = 0;
-var failure_count = 0;
-var typeTargets = new Array(
+var successful_count = 0;	//成功数
+var failure_count = 0;		//失敗数
+
+var typeTargets = new Array(//問題配列
   "LOVE", "HAVE", "GO", "DO", "MAKE", "TAKE", "GIVE", "GET",
   "SAY", "COME", "BE", "SEE", "LOOK", "KNOW", "THINK", "SEEM",
   "LIKE", "ASK", "TALK", "SPEAK", "HEAR", "LISTEN", "USE"
 );
 
 function init() {
-  label.innerHTML = next();
+  label.innerHTML = next();	//乱数で選ばれた問題配列の中の１つをラベルに
 }
 
 function keyDown() {
-  var text = label.innerHTML;
-  var code = text.charCodeAt(0);
-  if (event.keyCode == code) {
-    text = text.substring(1, text.length);
-    if (text.length == 0) text = next();
-    label.innerHTML = text;
-    successful_count++;
+  var text = label.innerHTML;	//乱数で選ばれた問題
+  var code = text.charCodeAt(0);//text（問題）の１文字目の文字コードを参照
+  if (event.keyCode == code) {	//押されたキーとcode（正解）が真か
+    text = text.substring(1, text.length);//text（問題）の２文字目から最後までを代入
+    if (text.length == 0) 		//text（問題）の長さが０なら
+		text = next();	//次の問題を作る
+    label.innerHTML = text;		//問題を表示
+    successful_count++;			//正解数に＋１
   }
-  else failure_count++
+  else 
+  	failure_count++;			//失敗数に＋１
 
-  successful.innerHTML = successful_count;
-  failure.innerHTML = failure_count;
+  successful.innerHTML = successful_count;	//正解数を更新
+  failure.innerHTML = failure_count;		//失敗数を更新
 }
 function next() {
-  var index = Math.round(Math.random() * (typeTargets.length - 1));
-  return typeTargets[index];
+  var index = Math.round(Math.random() * (typeTargets.length - 1));//問題数分の乱数生成
+  return typeTargets[index];	//問題配列[乱数]
 }
     </script>
   </head>
 
-  <body onkeydown="keyDown()" onload="init()">
+  <body onkeydown="keyDown()" onLoad="init()">
     <table border="0" width="100%" height="100%">
       <tr><td>成功数=<span id="successful">0</span>
         , 失敗数=<span id="failure">0</span></td></tr>
