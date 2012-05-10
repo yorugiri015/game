@@ -1,0 +1,65 @@
+@charset "utf-8";
+/* CSS Document */
+
+* {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#game_wrap {
+	margin-left: auto;
+	margin-right: auto;
+	width: 600px;
+	height: 400px;
+}
+
+#result {
+	margin: 30px auto 0px auto;
+	width: 250px;
+	height: 50px;
+}
+
+#result li {
+	float: left;
+	margin: 15px 10px 0px 15px;
+	font-size: 20px;
+}
+
+#time {
+	clear: both;
+	float: right;
+	margin: 50px 0px 0px 0px;
+	width: 100px;
+	height: 40px;
+	background:#F00;
+	color: #FFF;
+	text-align: center;
+	line-height: 40px;
+}
+
+#question {
+	clear: both;
+	float: left;
+	margin: 0px 0px 0px 0px;
+	width: 100px;
+	height: 40px;
+	background-color:#69C;
+	color: #000;
+	text-align: center;
+	border-radius: 10px 10px 0px 0px;
+	line-height: 40px;
+}
+
+#word_box {
+	float: left;
+	margin: 0px 0px 0px 0px;
+	width: 600px;
+	height: 200px;
+	border:#69C solid 2px;
+	color: #000;
+	text-align: center;
+	font-size: 50px;
+	line-height: 180px;
+}
+
