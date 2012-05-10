@@ -1,12 +1,14 @@
 @charset "utf-8";
 /* CSS Document */
 
+/*全称セレクタ*/
 * {
 	margin: 0;
 	padding: 0;
 	list-style: none;
 }
 
+/*ゲーム画面全体*/
 #game_wrap {
 	margin-left: auto;
 	margin-right: auto;
@@ -14,6 +16,7 @@
 	height: 400px;
 }
 
+/*入力結果*/
 #result {
 	margin: 30px auto 0px auto;
 	width: 250px;
@@ -26,6 +29,7 @@
 	font-size: 20px;
 }
 
+/*制限時間表示*/
 #time {
 	clear: both;
 	float: right;
@@ -38,6 +42,7 @@
 	line-height: 40px;
 }
 
+/*問題数の表示*/
 #question {
 	clear: both;
 	float: left;
@@ -51,6 +56,7 @@
 	line-height: 40px;
 }
 
+/*単語を表示*/
 #word_box {
 	float: left;
 	margin: 0px 0px 0px 0px;
