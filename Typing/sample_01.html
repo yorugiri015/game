@@ -3,10 +3,48 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Typing Game Sample</title>
+<script language="javascript">
+	var successful_count = 0;	//成功数
+	var failure_count = 0;		//失敗数
+	var count = 1;				//問題数
+
+	var typeTargets = new Array(				//問題配列
+ 		"STRAWBERRY", "ORANGE","CHERRY","BANANA","APPLE"
+	);
+
+	function init() {
+  		word.innerHTML = next();	//乱数で選ばれた問題配列の中の１つをラベルに
+  		question.innerHTML = "第"+count+"問";			//問題数を更新
+	}
+
+	function keyDown() {
+		var text = word.innerHTML;	//乱数で選ばれた問題
+		var code = text.substring(0,1);//text（問題）の１文字目の文字コードを参照
+		var chr = String.fromCharCode(event.keyCode);//入力されたキーコードを文字列に
+			if (chr == code) {	//押されたキーとcode（正解）が真か
+    			text = text.substring(1, text.length);//text（問題）の２文字目から最後までを代入
+    			if (text.length == 0) {		//text（問題）の長さが０なら
+					text = next();	//次の問題を作る
+					count++;
+				}
+    		word.innerHTML = text;		//問題を表示
+    		successful_count++;			//正解数に＋１
+  			}else 
+  				failure_count++;			//失敗数に＋１
+	
+  		success.innerHTML = successful_count;	//正解数を更新
+  		failed.innerHTML = failure_count;		//失敗数を更新
+   		question.innerHTML = "第"+count+"問";	//問題数を更新
+	}
+	function next() {
+		var index = Math.round(Math.random() * (typeTargets.length - 1));//問題数分の乱数生成
+  		return typeTargets[index];	//問題配列[乱数]
+	}
+</script>
 <link href="sample_01.css" rel="stylesheet" type="text/css">
 </head>
 
-<body>
+<body onkeydown="keyDown()" onLoad="init()">
 
 	<!--ゲーム画面全体ここから-->
 	<div id="game_wrap">
@@ -24,13 +62,13 @@
     <!--制限時間の表示ここまで-->
     
     <!--問題数の表示ここから-->
-    <div id="question">第1問</div>
+    <div id="question"></div>
     <!--問題数の表示ここまで-->
     
     <!--単語の表示ここから-->
     <div id="word_box">
     	<!--↓idを指定して単語を入れ替え？-->
-    	<span id="word">Orange</span>
+    	<span id="word"></span>
      </div>
      <!--単語の表示ここまで-->
      
