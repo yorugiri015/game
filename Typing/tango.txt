@@ -1,33 +1,33 @@
-y‰Ê•¨z
-Eavocado  ¨ ƒAƒ{ƒJƒh
-Eapricot  ¨ ‚ ‚ñ‚¸
-Estrawberry   ¨ ‚¢‚¿‚²
-Efig  	 ¨ ƒCƒ`ƒWƒN
-Eorange   ¨ ƒIƒŒƒ“ƒW
-Epersimmom  ¨ Š`
-Ekiwi 	¨ ƒLƒEƒC
-Echestnut  ¨ ŒI
-Egrapefruit  ¨ ƒOƒŒ[ƒvƒtƒ‹[ƒc
-Ecoconut  ¨ ƒRƒRƒiƒbƒc
-Echerry  ¨ ‚³‚­‚ç‚ñ‚Ú
-Ewatermelon  ¨ ƒXƒCƒJ
-Edurian  ¨ ƒhƒŠƒAƒ“
-Epear  ¨ ƒiƒV
-Epineapple  ¨ ƒpƒCƒiƒbƒvƒ‹
-Ebanana  ¨ ƒoƒiƒi
-Epapaya  ¨ ƒpƒpƒCƒ„
-Eloquat  ¨ ‚Ñ‚í
-Egrape  ¨ ‚Ô‚Ç‚¤
-Eplum  ¨ ƒvƒ‰ƒ€
-Eblueberry  ¨ ƒuƒ‹[ƒxƒŠ[
-Emuscat  ¨ ƒ}ƒXƒJƒbƒg
-Emuskmelon  ¨ ƒ}ƒXƒNƒƒƒ“
-Emango  ¨ ƒ}ƒ“ƒS[
-Emandarin orange  ¨ ‚İ‚©‚ñ
-Emelon  ¨ ƒƒƒ“
-Epeach  ¨ “
-Eyuzu  ¨ ‚ä‚¸
-Elime  ¨ ƒ‰ƒCƒ€
-Eraspberry  ¨ ƒ‰ƒYƒxƒŠ[
-Eapple  ¨ ‚è‚ñ‚²
-Elemon  ¨ ƒŒƒ‚ƒ“
+ï»¿ã€æœç‰©ã€‘
+ãƒ»avocado  â†’ ã‚¢ãƒœã‚«ãƒ‰
+ãƒ»apricot  â†’ ã‚ã‚“ãš
+ãƒ»strawberry   â†’ ã„ã¡ã”
+ãƒ»fig  	 â†’ ã‚¤ãƒã‚¸ã‚¯
+ãƒ»orange   â†’ ã‚ªãƒ¬ãƒ³ã‚¸
+ãƒ»persimmom  â†’ æŸ¿
+ãƒ»kiwi 	â†’ ã‚­ã‚¦ã‚¤
+ãƒ»chestnut  â†’ æ —
+ãƒ»grapefruit  â†’ ã‚°ãƒ¬ãƒ¼ãƒ—ãƒ•ãƒ«ãƒ¼ãƒ„
+ãƒ»coconut  â†’ ã‚³ã‚³ãƒŠãƒƒãƒ„
+ãƒ»cherry  â†’ ã•ãã‚‰ã‚“ã¼
+ãƒ»watermelon  â†’ ã‚¹ã‚¤ã‚«
+ãƒ»durian  â†’ ãƒ‰ãƒªã‚¢ãƒ³
+ãƒ»pear  â†’ ãƒŠã‚·
+ãƒ»pineapple  â†’ ãƒ‘ã‚¤ãƒŠãƒƒãƒ—ãƒ«
+ãƒ»banana  â†’ ãƒãƒŠãƒŠ
+ãƒ»papaya  â†’ ãƒ‘ãƒ‘ã‚¤ãƒ¤
+ãƒ»loquat  â†’ ã³ã‚
+ãƒ»grape  â†’ ã¶ã©ã†
+ãƒ»plum  â†’ ãƒ—ãƒ©ãƒ 
+ãƒ»blueberry  â†’ ãƒ–ãƒ«ãƒ¼ãƒ™ãƒªãƒ¼
+ãƒ»muscat  â†’ ãƒã‚¹ã‚«ãƒƒãƒˆ
+ãƒ»muskmelon  â†’ ãƒã‚¹ã‚¯ãƒ¡ãƒ­ãƒ³
+ãƒ»mango  â†’ ãƒãƒ³ã‚´ãƒ¼
+ãƒ»mandarin orange  â†’ ã¿ã‹ã‚“
+ãƒ»melon  â†’ ãƒ¡ãƒ­ãƒ³
+ãƒ»peach  â†’ æ¡ƒ
+ãƒ»yuzu  â†’ ã‚†ãš
+ãƒ»lime  â†’ ãƒ©ã‚¤ãƒ 
+ãƒ»raspberry  â†’ ãƒ©ã‚ºãƒ™ãƒªãƒ¼
+ãƒ»apple  â†’ ã‚Šã‚“ã”
+ãƒ»lemon  â†’ ãƒ¬ãƒ¢ãƒ³
