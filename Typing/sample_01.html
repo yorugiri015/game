@@ -34,7 +34,7 @@
 	
   		success.innerHTML = successful_count;	//正解数を更新
   		failed.innerHTML = failure_count;		//失敗数を更新
-   		question.innerHTML = "第"+count+"問";	//問題数を更新
+   		q_num.innerHTML = count;	//問題数を更新
 	}
 	function next() {
 		var index = Math.round(Math.random() * (typeTargets.length - 1));//問題数分の乱数生成
@@ -62,7 +62,11 @@
     <!--制限時間の表示ここまで-->
     
     <!--問題数の表示ここから-->
-    <div id="question"></div>
+    <div id="question">
+    	<div id="dai">第</div>
+      <div id="q_num"></div>
+      <div id="mon">問</div>
+    </div>
     <!--問題数の表示ここまで-->
     
     <!--単語の表示ここから-->
