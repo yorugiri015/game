@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+﻿<!DOCTYPE HTML>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -9,12 +9,16 @@
 	var count = 1;				//問題数
 
 	var typeTargets = new Array(				//問題配列
- 		"STRAWBERRY", "ORANGE","CHERRY","BANANA","APPLE"
+ 		"STRAWBERRY", "ORANGE","CHERRY","BANANA","APPLE",
+		"GRAPEFRUIT","PINEAPPLE","WATERMELON","GRAPE","RASPBERRY",
+		"BLUEBERRY","MUSCAT","MELON","PEACH","LEMON",
+		"COCONUT","DURIAN","PAPAYA","MUSKMELON","MANGO",
+		"AVOCADO","APRICOT","KIWI","YUZU","LIME"
 	);
 
 	function init() {
   		word.innerHTML = next();	//乱数で選ばれた問題配列の中の１つをラベルに
-  		question.innerHTML = "第"+count+"問";			//問題数を更新
+  		q_num.innerHTML = count;			//問題数を更新
 	}
 
 	function keyDown() {
