@@ -9,7 +9,7 @@
 	var count = 1;				//問題数
 	var combo = 0;				//コンボ数（成功単語数）
 	var conboFlag = true;		//ある単語入力中にミスした場合、その単語を打ち終わってもcomboは発動しない！
-	var TimerStart = 10;          //タイマの開始値
+	var TimerStart = 3;          //タイマの開始値
 	var Timer      = TimerStart   //カウントダウンタイマ
 	var Wait       = 1000;        //待ち時間（ミリ秒）
 	
@@ -21,6 +21,8 @@
 		"COCONUT","DURIAN","PAPAYA","MUSKMELON","MANGO",
 		"AVOCADO","APRICOT","KIWI","YUZU","LIME"
 	);
+	
+
 
 	function init() {
   		word.innerHTML = next();	//乱数で選ばれた問題配列の中の１つをラベルに
@@ -29,7 +31,7 @@
    	 	document.getElementById("disp").innerHTML = html;
 	}
 
-function keyDown() {
+	function keyDown() {
 		var text = word.innerHTML;	//乱数で選ばれた問題
 		var code = text.substring(0,1);//text（問題）の１文字目の文字コードを参照
 		var chr = String.fromCharCode(event.keyCode);//入力されたキーコードを文字列に
@@ -88,8 +90,7 @@ function keyDown() {
     }
 }
 </script>
-<link href="css/sample_01.css" rel="stylesheet" type="text/css">
-<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="sample_01.css" rel="stylesheet" type="text/css">
 </head>
 
 <body onkeydown="keyDown()" onLoad="init()">
@@ -97,12 +98,12 @@ function keyDown() {
 	<!--ゲーム画面全体ここから-->
 	<div id="game_wrap">
   
-  
+ <!--<input type="button" value="ボタン"  onClick='setTimeout("test()",5000)'>-->
   	コンボ数：<span id="combocount">0</span>
     <div id="disp">
     </div>
      <span id="time">0</span>
-    
+
     <!--問題数の表示ここから-->
     <div id="question">
     	<div id="dai">第</div>
@@ -118,23 +119,13 @@ function keyDown() {
      </div>
      <!--単語の表示ここまで-->
      
-     <!--ボタンここから-->
-     <div class="button_left">
-      <button class="btn btn-warning btn-large" onClick="hogeStart()"><i class="icon-white icon-play"></i> 　スタート　</button>
-     </div>
-     <div class="button_right">
-     	<button class="btn btn-success btn-large"><i class="icon-white icon-repeat"></i> 　リセット　</button>
-     </div>
-     <!--ボタンここまで-->
-     
-    <!--入力結果の表示ここから-->
+       	<!--入力結果の表示ここから-->
   	<div id="result">
     	<li>成功数：<span id="success">0</span></li>
      	<li>/</li>
       	<li>失敗数：<span id="failed">0</span></li>
     </div>
     <!--入力結果の表示ここまで-->
-    
      
   </div>
   <!--ゲーム画面全体ここまで-->
