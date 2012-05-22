@@ -3,9 +3,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Typing Game Sample</title>
-<link rel="stylesheet" href="/css/reset.css" type="text/css">
-<link rel="stylesheet" href="/css/layout.css" type="text/css">
-<link rel="stylesheet" href="/css/general.css" type="text/css">
 <script language="javascript">
 	var successful_count = 0;	//成功数
 	var failure_count = 0;		//失敗数
@@ -87,7 +84,8 @@
     }
 }
 </script>
-<link href="sample_01.css" rel="stylesheet" type="text/css">
+<link href="css/sample_01.css" rel="stylesheet" type="text/css">
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
 </head>
 
 <body onkeydown="keyDown()" onLoad="init()">
@@ -100,10 +98,6 @@
     <div id="disp">
     </div>
      <span id="time">0</span>
-    
-    <!--制限時間の表示ここから
-  	<div id="time">あと 19 秒</div>
-    <!--制限時間の表示ここまで-->
     
     <!--問題数の表示ここから-->
     <div id="question">
@@ -120,13 +114,23 @@
      </div>
      <!--単語の表示ここまで-->
      
-       	<!--入力結果の表示ここから-->
+     <!--ボタンここから-->
+     <div class="button_left">
+      <button class="btn btn-warning btn-large"><i class="icon-white icon-play"></i> 　スタート　</button>
+     </div>
+     <div class="button_right">
+     	<button class="btn btn-success btn-large"><i class="icon-white icon-repeat"></i> 　リセット　</button>
+     </div>
+     <!--ボタンここまで-->
+     
+    <!--入力結果の表示ここから-->
   	<div id="result">
     	<li>成功数：<span id="success">0</span></li>
      	<li>/</li>
       	<li>失敗数：<span id="failed">0</span></li>
     </div>
     <!--入力結果の表示ここまで-->
+    
      
   </div>
   <!--ゲーム画面全体ここまで-->
