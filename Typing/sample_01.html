@@ -21,7 +21,7 @@
 		"COCONUT","DURIAN","PAPAYA","MUSKMELON","MANGO",
 		"AVOCADO","APRICOT","KIWI","YUZU","LIME",
 		"AYE-AYE","RACCOON","ARMADILLO","DOG","RABBIT","HORSE",
-		"BULL","WOLF","ORANGUTAN","ROOSTER","HIPPOPOTAMUS"
+		"BULL","WOLF","ORANGUTAN","ROOSTER","HIPPOPOTAMUS",
 		"PLATYPUS","KANGAROO","FOX","GIRAFFE","BEAR","KOALA",
 		"PUPPY","KITTEN","COYOTE","GORILLA","RHINOCEROS",
 		"MONKEY","DEER","SIAMESE CAT","ZEBRA","CHIPMUNK",
@@ -39,12 +39,12 @@
 		"グレープフルーツ","パイナップル","スイカ","ぶどう","ラズベリー",
 		"ブルーベリー","マスカット","メロン","もも","レモン",
 		"ココナッツ","ドリアン","パパイヤ","マスクメロン","マンゴー",
-		"アボカド","アプリコット","キウイ","ゆず","ライム"
+		"アボカド","アプリコット","キウイ","ゆず","ライム",
 		"アイアイ","アライグマ","アルマジロ","犬","うさぎ","馬",
 		"雄牛","オオカミ","オランウータン","雄鶏","カバ",
 		"カモノハシ","カンガルー","キツネ","キリン","熊","コアラ",
 		"子犬","子猫","コヨーテ","ゴリラ","サイ",
-		"猿","シカ","シャムネコ","シマウマ","シマリス"
+		"猿","シカ","シャムネコ","シマウマ","シマリス",
 		"スイギュウ","スカンク","ゾウ","チンパンジー",
 		"ドーベルマン","ネズミ","トラ","ナマケモノ","乳牛",
 		"ネコ","ハイエナ","ハツカネズミ","ハムスター","ハリネズミ",
@@ -89,8 +89,6 @@ function keyDown() {
 				combo = 0;
 				conboFlag = false;
 			}
-		}else{
-			alert("o((=゜ｴ゜=))o　＜ 仕事しなよ");
 		}
 	
 		combocount.innerHTML = combo;
@@ -111,14 +109,19 @@ function keyDown() {
 	//カウントダウン
 	function hogeCountDown() {
    		if (Timer <= 0) {
+			time.innerHTML = '0';
        	 	document.getElementById("disp").innerHTML = html;
         	clearTimeout();
+			timeUp();
     	} else {
-        	Timer--;
-			time.innerHTML = Timer;
+			time.innerHTML = Timer--;
 			document.getElementById("disp").innerHTML = html;
         	setTimeout(hogeCountDown, Wait);
     }
+	
+	function timeUp(){
+		alert("o((=゜ｴ゜=))o　＜ 仕事しなよ");
+	}
 }
 </script>
 <link href="css/sample_01.css" rel="stylesheet" type="text/css">
