@@ -19,20 +19,52 @@
 		"GRAPEFRUIT","PINEAPPLE","WATERMELON","GRAPE","RASPBERRY",
 		"BLUEBERRY","MUSCAT","MELON","PEACH","LEMON",
 		"COCONUT","DURIAN","PAPAYA","MUSKMELON","MANGO",
-		"AVOCADO","APRICOT","KIWI","YUZU","LIME"
+		"AVOCADO","APRICOT","KIWI","YUZU","LIME",
+		"AYE-AYE","RACCOON","ARMADILLO","DOG","RABBIT","HORSE",
+		"BULL","WOLF","ORANGUTAN","ROOSTER","HIPPOPOTAMUS",
+		"PLATYPUS","KANGAROO","FOX","GIRAFFE","BEAR","KOALA",
+		"PUPPY","KITTEN","COYOTE","GORILLA","RHINOCEROS",
+		"MONKEY","DEER","SIAMESE CAT","ZEBRA","CHIPMUNK",
+		"BUFFALO","SKUNK","ELEPHANT","CHIMPANZEE",
+		"DOBERMAN PINSCHER","RAT","TIGER","SLOTH","COW",
+		"CAT","HYENA","MOUSE","HAMSTER","HEDGEHOG",
+		"PANDA","BEAVER","SHEEP","BABOON","LEOPARD",
+		"FERRET","OPOSSUM","PIG","PRAIRIE DOG","HEN","MOLE",
+		"GUINEA PIG","GOAT","PORCUPINE","LION","CAMEL","LLAMA",
+		"SQUIRREL","DONKEY"
+	);
+	
+	var typeTargetsJapanese = new Array(				//問題の意味
+ 		"いちご", "みかん","さくらんぼ","ばなな","りんご",
+		"グレープフルーツ","パイナップル","スイカ","ぶどう","ラズベリー",
+		"ブルーベリー","マスカット","メロン","もも","レモン",
+		"ココナッツ","ドリアン","パパイヤ","マスクメロン","マンゴー",
+		"アボカド","アプリコット","キウイ","ゆず","ライム",
+		"アイアイ","アライグマ","アルマジロ","犬","うさぎ","馬",
+		"雄牛","オオカミ","オランウータン","雄鶏","カバ",
+		"カモノハシ","カンガルー","キツネ","キリン","熊","コアラ",
+		"子犬","子猫","コヨーテ","ゴリラ","サイ",
+		"猿","シカ","シャムネコ","シマウマ","シマリス",
+		"スイギュウ","スカンク","ゾウ","チンパンジー",
+		"ドーベルマン","ネズミ","トラ","ナマケモノ","乳牛",
+		"ネコ","ハイエナ","ハツカネズミ","ハムスター","ハリネズミ",
+		"パンダ","ビーバー","ヒツジ","ヒヒ","ヒョウ",
+		"フェレット","フクロネズミ","豚","プレーリードッグ","雌鳥","モグラ",
+		"モルモット","ヤギ","ヤマアラシ","ライオン","ラクダ","ラマ",
+		"リス","ロバ"
+
 	);
 
 	function init() {
   		word.innerHTML = next();	//乱数で選ばれた問題配列の中の１つをラベルに
   		q_num.innerHTML = count;			//問題数を更新
-		html = '<button type="button" class="punch" onClick="hogeStart()">スタート</button>';
-   	 	document.getElementById("disp").innerHTML = html;
 	}
 
-	function keyDown() {
+function keyDown() {
 		var text = word.innerHTML;	//乱数で選ばれた問題
 		var code = text.substring(0,1);//text（問題）の１文字目の文字コードを参照
 		var chr = String.fromCharCode(event.keyCode);//入力されたキーコードを文字列に
+		if(Timer > 0){
 			if (chr == code) {	//押されたキーとcode（正解）が真か
     			text = text.substring(1, text.length);//text（問題）の２文字目から最後までを代入
     			if (text.length == 0) {		//text（問題）の長さが０なら
@@ -55,6 +87,7 @@
 				combo = 0;
 				conboFlag = false;
 			}
+		}
 	
 		combocount.innerHTML = combo;
   		success.innerHTML = successful_count;	//正解数を更新
@@ -74,14 +107,17 @@
 	//カウントダウン
 	function hogeCountDown() {
    		if (Timer <= 0) {
-       	 	document.getElementById("disp").innerHTML = html;
+			time.innerHTML = '0';
         	clearTimeout();
+			timeUp();
     	} else {
-        	Timer--;
-			time.innerHTML = Timer;
-			document.getElementById("disp").innerHTML = html;
+			time.innerHTML = Timer--;
         	setTimeout(hogeCountDown, Wait);
     }
+	
+	function timeUp(){
+		alert("o((=゜ｴ゜=))o　＜ 仕事しなよ");
+	}
 }
 </script>
 <link href="css/sample_01.css" rel="stylesheet" type="text/css">
@@ -122,7 +158,7 @@
      
      <!--ボタンここから-->
      <div class="button_left">
-      <button class="btn btn-warning btn-large"><i class="icon-white icon-play"></i> 　スタート　</button>
+      <button class="btn btn-warning btn-large" onClick="hogeStart()"><i class="icon-white icon-play"></i> 　スタート　</button>
      </div>
      <div class="button_right">
      	<button class="btn btn-success btn-large"><i class="icon-white icon-repeat"></i> 　リセット　</button>
