@@ -10,7 +10,7 @@
 
 /*ゲーム画面全体*/
 #game_wrap {
-	margin: 100px auto 0px auto;
+	margin: 50px auto 0px auto;
 	width: 600px;
 	height: 400px;
 }
@@ -29,47 +29,21 @@
 	font-size: 20px;
 }
 
-/*吹き出しボックス部分*/
+/*吹き出し*/
 .speech_buble {
 	float: right;
 	width: 400px;
-	height: 100px;
-	padding: 15px;
-	-webkit-border-radius: 10px;
-	-moz-border-radius: 10px;
-	border-radius: 10px;
+	height: 200px;
 	border-style: none;
-	background-color:#f00;
-}
-
-/*吹き出し：▼部分の親*/
-.triangle_hidden {
-	margin-left: 400px;
+	background: url(../img/speech_bubble.png) no-repeat;
 	position: relative;
-	overflow: hidden;		/*はみ出した部分は表示しないようにする*/
-	background: transparent;	/*背景は透明にする*/
-	width: 100px;
-	height: 30px;
-	margin-bottom: -20px;
-}
-
-/*吹き出し：▼部分の子*/
-.triangle {
-    position:absolute;
-    width: 40px;
-		height: 40px;
-    left:50%;
-    top: -20px;
-		background-color: #f00;
-		/*divを回転する*/
-		-webkit-transform: rotate(45deg);  
-    -moz-transform: rotate(45deg); 
+	margin: 0px 0px -30px 0px;
 }
 
 /*制限時間表示*/
 #time {
-	clear: both;
-	margin: 50px 0px 0px 0px;
+	position: absolute;		/*吹き出しの子として配置*/
+	margin: 20px 0px 0px 20px;
 	width: 100px;
 	height: 40px;
 	background:#FC0;
