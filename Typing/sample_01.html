@@ -57,9 +57,12 @@
 	);
 
 	function init() {
+		combo=0;
+		count=1;
   		word.innerHTML = next();	//乱数で選ばれた問題配列の中の１つをラベルに
 		jp_word.innerHTML = next2();//日本語
   		q_num.innerHTML = count;			//問題数を更新
+		combocount.innerHTML = combo; //リセットボタン押したときにコンボ数が0になる
 	}
 
 function keyDown() {
@@ -172,7 +175,7 @@ function keyDown() {
       <button class="btn btn-warning btn-large" onClick="hogeStart()"><i class="icon-white icon-play"></i> 　スタート　</button>
      </div>
      <div class="button_right">
-     	<button class="btn btn-success btn-large"><i class="icon-white icon-repeat"></i> 　リセット　</button>
+     	<button class="btn btn-success btn-large" onClick="init()"><i class="icon-white icon-repeat"></i> 　リセット　</button>
      </div>
     <!--ボタンここまで-->
      
