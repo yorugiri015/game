@@ -3,13 +3,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Typing Game Sample</title>
+<script type="text/javascript" src="lib/jquery.js"></script>
+<script type="text/javascript" src="lib/jquery.alerts.js"></script>
+<link rel="stylesheet" href="css/jquery.alerts.css" type="text/css" />
 <script language="javascript">
 	var successful_count = 0;	//成功数
 	var failure_count = 0;		//失敗数
 	var count = 1;				//問題数
 	var combo = 0;				//コンボ数（成功単語数）
 	var conboFlag = true;		//ある単語入力中にミスした場合、その単語を打ち終わってもcomboは発動しない！
-	var TimerStart = 10;          //タイマの開始値
+	var TimerStart = 2;          //タイマの開始値
 	var Timer      = TimerStart   //カウントダウンタイマ
 	var Wait       = 1000;        //待ち時間（ミリ秒）
 	var index;					  //語句配列用変数
@@ -53,60 +56,58 @@
 		"フェレット","フクロネズミ","豚","プレーリードッグ","雌鳥","モグラ",
 		"モルモット","ヤギ","ヤマアラシ","ライオン","ラクダ","ラマ",
 		"リス","ロバ"
-
 	);
 
 	function init() {
-  		word.innerHTML = next();	//乱数で選ばれた問題配列の中の１つをラベルに
-		jp_word.innerHTML = next2();//日本語
+  		word.innerHTML = next();			//乱数で選ばれた問題を表示
+		jp_word.innerHTML = next2();		//日本語
   		q_num.innerHTML = count;			//問題数を更新
 	}
 
 function keyDown() {
-		var text = word.innerHTML;	//乱数で選ばれた問題
-		var text2 = jp_word.innerHTML;//日本語
-		var code = text.substring(0,1);//text（問題）の１文字目の文字コードを参照
-		var chr = String.fromCharCode(event.keyCode);//入力されたキーコードを文字列に
+		var text = word.innerHTML;						//乱数で選ばれた問題
+		var text2 = jp_word.innerHTML;					//日本語
+		var code = text.substring(0,1);					//text（問題）の１文字目の文字コードを参照
+		var chr = String.fromCharCode(event.keyCode);	//入力されたキーコードを文字列に
 		if(Timer > 0){
-			if (chr == code) {	//押されたキーとcode（正解）が真か
-    			text = text.substring(1, text.length);//text（問題）の２文字目から最後までを代入
-    			if (text.length == 0) {		//text（問題）の長さが０なら
-					if(conboFlag == false){
-						combo = 0;
-						text = next();	//次の問題を作る
-						text2 = next2();//次の問題を作る(日本語)
-						count++;
-						conboFlag = true;
-					}else{
-						text = next();	//次の問題を作る
-						text2 = next2();//次の問題を作る(日本語)
-						count++;
-						combo++;
-						conboFlag = true;
-					}
+			if (chr == code) {							//押されたキーとcode（正解）が真か
+    			text = text.substring(1, text.length);	//text（問題）の２文字目から最後までを代入
+    			if (text.length == 0) {					//text（問題）の長さが０なら
+					if(conboFlag == false)
+						combo = 0;	
+					else
+						combo++;		
+					text = next();						//次の問題を作る
+					text2 = next2();					//次の問題を作る(日本語)
+					count++;	
+					conboFlag = true;
 				}
-    		word.innerHTML = text;		//問題を表示
-			jp_word.innerHTML = text2;  //問題を表示(日本語)
-    		successful_count++;			//正解数に＋１
-  			}else {
-  				failure_count++;			//失敗数に＋１
+    		word.innerHTML = text;						//問題を表示
+			jp_word.innerHTML = text2;  				//問題を表示(日本語)
+    		successful_count++;							//正解数に＋１
+  			}else {		//打ち間違い時の処理
+  				failure_count++;						//失敗数に＋１
 				combo = 0;
-				conboFlag = false;
+				conboFlag = false;						//コンボ数リセット
 			}
 		}
 	
-		combocount.innerHTML = combo;
-  		success.innerHTML = successful_count;	//正解数を更新
-  		failed.innerHTML = failure_count;		//失敗数を更新
-   		q_num.innerHTML = count;	//問題数を更新
+		combocount.innerHTML = combo;					//コンボ数を更新
+  		success.innerHTML = successful_count;			//正解数を更新
+  		failed.innerHTML = failure_count;				//失敗数を更新
+   		q_num.innerHTML = count;						//問題数を更新
 	}
+
+	//次の問題を作る	
 	function next() {
-		index = Math.round(Math.random() * (typeTargets.length - 1));//問題数分の乱数生成
-  		return typeTargets[index];	//問題配列[乱数]
+		index = Math.round(Math.random() * (typeTargets.length - 1));	//乱数生成
+  		return typeTargets[index];										//問題配列[乱数]
 	}
-	function next2() {//次の問題を作る(日本語)
+	
+	//次の問題を作る(日本語)
+	function next2() {	
 		var index2 = index;
-		return typeTargetsJapanese[index2];	//問題配列[乱数]
+		return typeTargetsJapanese[index2];								//日本語の問題配列[乱数]
 	}
 	
 	//開始
@@ -114,19 +115,20 @@ function keyDown() {
     	Timer = TimerStart;
     	setTimeout(hogeCountDown, Wait);
 	}
+	
 	//カウントダウン
 	function hogeCountDown() {
    		if (Timer <= 0) {
 			time.innerHTML = '0';
         	clearTimeout();
-			timeUp();
+			timeUp();													//アラート表示
     	} else {
 			time.innerHTML = Timer--;
         	setTimeout(hogeCountDown, Wait);
     }
 	
 	function timeUp(){
-		alert("o((=゜ｴ゜=))o　＜ 仕事しなよ");
+		 jAlert('ゲームオーバー！', 'あてんしょん！');
 	}
 }
 </script>
