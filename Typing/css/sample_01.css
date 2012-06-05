@@ -105,6 +105,7 @@
 
 
 .button_left {
+	clear: both;
 	float: left;
 	margin: 20px 0px 0px 150px;
 }
