@@ -12,7 +12,7 @@
 	var count = 1;				//問題数
 	var combo = 0;				//コンボ数（成功単語数）
 	var conboFlag = true;		//ある単語入力中にミスした場合、その単語を打ち終わってもcomboは発動しない！
-	var TimerStart = 2;          //タイマの開始値
+	var TimerStart = 10;          //タイマの開始値
 	var Timer      = TimerStart   //カウントダウンタイマ
 	var Wait       = 1000;        //待ち時間（ミリ秒）
 	var index;					  //語句配列用変数
@@ -128,7 +128,7 @@ function keyDown() {
     }
 	
 	function timeUp(){
-		 jAlert('ゲームオーバー！', 'あてんしょん！');
+		 jAlert('デザインはcss/jquery.alerts.cssでいじれるよ', 'あてんしょん！');
 	}
 }
 </script>
