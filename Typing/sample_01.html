@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+﻿<!DOCTYPE HTML>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -16,6 +16,7 @@
 	var Timer      = TimerStart   //カウントダウンタイマ
 	var Wait       = 1000;        //待ち時間（ミリ秒）
 	var index;					  //語句配列用変数
+	var TimerFlag = true;
 	
 
 	var typeTargets = new Array(				//問題配列
@@ -24,7 +25,7 @@
 		"BLUEBERRY","MUSCAT","MELON","PEACH","LEMON",
 		"COCONUT","DURIAN","PAPAYA","MUSKMELON","MANGO",
 		"AVOCADO","APRICOT","KIWI","YUZU","LIME",
-		"AYE-AYE","RACCOON","ARMADILLO","DOG","RABBIT","HORSE",
+		"AYEAYE","RACCOON","ARMADILLO","DOG","RABBIT","HORSE",
 		"BULL","WOLF","ORANGUTAN","ROOSTER","HIPPOPOTAMUS",
 		"PLATYPUS","KANGAROO","FOX","GIRAFFE","BEAR","KOALA",
 		"PUPPY","KITTEN","COYOTE","GORILLA","RHINOCEROS",
@@ -59,9 +60,16 @@
 	);
 
 	function init() {
-  		word.innerHTML = next();			//乱数で選ばれた問題を表示
-		jp_word.innerHTML = next2();		//日本語
+		combo=0;
+		count=1;
+  		word.innerHTML = next();	//乱数で選ばれた問題配列の中の１つをラベルに
+		jp_word.innerHTML = next2();//日本語
   		q_num.innerHTML = count;			//問題数を更新
+		combocount.innerHTML = combo; //リセットボタン押したときにコンボ数が0になる
+		if(TimerFlag == false){
+			clearTimeout();
+			Timer = 0;
+		}
 	}
 
 function keyDown() {
@@ -112,8 +120,11 @@ function keyDown() {
 	
 	//開始
 	function hogeStart() {
-    	Timer = TimerStart;
-    	setTimeout(hogeCountDown, Wait);
+		if(TimerFlag == true){
+	    	Timer = TimerStart;
+			TimerFlag = false;
+    		setTimeout(hogeCountDown, Wait);
+		}
 	}
 	
 	//カウントダウン
@@ -121,6 +132,7 @@ function keyDown() {
    		if (Timer <= 0) {
 			time.innerHTML = '0';
         	clearTimeout();
+			TimerFlag = true;
 			timeUp();													//アラート表示
     	} else {
 			time.innerHTML = Timer--;
@@ -174,7 +186,7 @@ function keyDown() {
       <button class="btn btn-warning btn-large" onClick="hogeStart()"><i class="icon-white icon-play"></i> 　スタート　</button>
      </div>
      <div class="button_right">
-     	<button class="btn btn-success btn-large"><i class="icon-white icon-repeat"></i> 　リセット　</button>
+     	<button class="btn btn-success btn-large" onClick="init()"><i class="icon-white icon-repeat"></i> 　リセット　</button>
      </div>
     <!--ボタンここまで-->
      
