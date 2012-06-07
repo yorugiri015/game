@@ -152,15 +152,17 @@ function keyDown() {
 
 	<!--ゲーム画面全体ここから-->
 	<div id="game_wrap">
-  
-  
-  
-  	コンボ数：<span id="combocount">0</span>
-     
-     
-     
+       
      <div class="speech_buble">
-     		<span id="time">0</span>
+     
+     	<div id="div_time">
+      	あと <span id="time">0</span> 秒！
+      </div>
+     	
+      <div id="div_combo">
+      	<span id="combocount">0</span> コンボ！
+      </div>
+        
     	</div>
      
     
@@ -175,18 +177,18 @@ function keyDown() {
     <!--単語の表示ここから-->
     <div id="word_box">
     	<!--↓idを指定して単語を入れ替え？（日本語）-->
-    	<span id="jp_word"></span>
+    	<div id="jp_word"></div>
     	<!--↓idを指定して単語を入れ替え？-->
     	<span id="word"></span>
     </div>
     <!--単語の表示ここまで-->
      
-    <!--ボタンここから-->
-     <div class="button_left">
-      <button class="btn btn-warning btn-large" onClick="hogeStart()"><i class="icon-white icon-play"></i> 　スタート　</button>
+  <!--ボタンここから-->
+     <div id="button_left">
+      <a><button id="btn_start" onClick="hogeStart()"><i class="icon-white icon-play"></i> 　スタート　</button></a>
      </div>
-     <div class="button_right">
-     	<button class="btn btn-success btn-large" onClick="init()"><i class="icon-white icon-repeat"></i> 　リセット　</button>
+     <div id="button_right">
+     	<a><button id="btn_reset"><i class="icon-white icon-repeat"></i> 　リセット　</button></a>
      </div>
     <!--ボタンここまで-->
      

@@ -37,19 +37,38 @@
 	border-style: none;
 	background: url(../img/speech_bubble.png) no-repeat;
 	position: relative;
-	margin: 0px 0px -30px 0px;
+	margin: 0px -60px -70px 0px;
+}
+
+#div_time {
+	position: absolute;
+	margin: 40px 0px 0px 20px;
+	width: 200px;
+	height: 50px;
+	font-size:36px;
 }
 
 /*制限時間表示*/
 #time {
-	position: absolute;		/*吹き出しの子として配置*/
-	margin: 20px 0px 0px 20px;
 	width: 100px;
 	height: 40px;
-	background:#FC0;
-	color: #FFF;
+	color: #F00;
+	font-weight:bold;
 	text-align: center;
-	line-height: 40px;
+}
+
+/*コンボ数のdiv*/
+#div_combo {
+	position: absolute;
+	margin: 100px 0px 0px 200px;	
+	font-size:36px;
+}
+
+#combocount {
+	width: 100px;
+	height: 40px;
+	color:#00C;
+	font-weight: bold;
 }
 
 /*問題数の表示*/
@@ -90,6 +109,7 @@
 	margin-left: 10px;
 }
 
+
 /*単語を表示*/
 #word_box {
 	float: left;
@@ -103,14 +123,75 @@
 	line-height: 180px;
 }
 
+/*単語の日本語表記のdiv*/
+#jp_word {
+	width: 500px;
+	height: 50px;
+	margin: -30px auto 0px auto;
+	font-size: 30px;
+	text-align: center;
+	color:#666;
+}
 
-.button_left {
+
+#button_left {
 	clear: both;
 	float: left;
 	margin: 20px 0px 0px 150px;
+	background-color: #fff;
+	text-decoration: none;
 }
 
-.button_right {
+/*スタートボタンのスタイル*/
+#btn_start {
+	font-size: 14px;
+	color: #ffffff;
+	padding: 10px 20px;
+	background: -moz-linear-gradient(
+		top,
+		#f7b64d 0%,
+		#e78e08);
+	background: -webkit-gradient(
+		linear, left top, left bottom, 
+		from(#ffce2d),
+		to(#f3981d ));
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border: 1px solid #edb500;
+	text-shadow:
+		1px -1px 0px rgba(189,93,10,0.3),
+		0px 1px 0px rgba(255,255,255,0.4);	
+}
+
+#btn_reset {
+	font-size: 14px;
+	color: #ffffff;
+	padding: 10px 20px;
+	background: -moz-linear-gradient(
+		top,
+		#00e860 0%,
+		#00bf49);
+	background: -webkit-gradient(
+		linear, left top, left bottom, 
+		from(#00e860),
+		to(#00bf49 ));
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border: 1px solid #00c160;
+	text-shadow:
+		1px -1px 0px rgba(189,93,10,0.3),
+		0px 1px 0px rgba(255,255,255,0.4);	
+}
+
+a :hover{
+	opacity:0.8;
+	-moz-opacity:0.8;
+}
+
+
+#button_right {
 	float: right;
 	margin: 20px 150px 0px 0px;
 }
