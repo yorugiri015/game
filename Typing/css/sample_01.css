@@ -15,20 +15,6 @@
 	height: 400px;
 }
 
-/*入力結果*/
-#result {
-	margin: 30px auto 0px auto;
-	width: 300px;
-	height: 50px;
-	visibility: hidden;
-}
-
-#result li {
-	float: left;
-	margin: 15px 10px 0px 15px;
-	font-size: 20px;
-}
-
 /*吹き出し*/
 .speech_buble {
 	float: right;
@@ -133,7 +119,7 @@
 	color:#666;
 }
 
-
+/*スタートボタン（左）を左揃え*/
 #button_left {
 	clear: both;
 	float: left;
@@ -164,6 +150,14 @@
 		0px 1px 0px rgba(255,255,255,0.4);	
 }
 
+
+/*リセットボタン（右）を右揃え*/
+#button_right {
+	float: right;
+	margin: 20px 150px 50px 0px;
+}
+
+/*リセットボタンのスタイル*/
 #btn_reset {
 	font-size: 14px;
 	color: #ffffff;
@@ -185,15 +179,28 @@
 		0px 1px 0px rgba(255,255,255,0.4);	
 }
 
+
 a :hover{
+	/*ホバー時に少し透過させる*/
 	opacity:0.8;
 	-moz-opacity:0.8;
 }
 
 
-#button_right {
-	float: right;
-	margin: 20px 150px 0px 0px;
+/*入力結果*/
+#result {
+	clear: both;
+	width: 300px;
+	height: 150px;
+	margin: 100px auto 0px auto;
+	background-color:#9F9;
+	/*テスト段階ですが表示しています*/
 }
+
+#result li {
+	padding: 20px 20px 0px 20px;
+	font-size: 20px;
+}
+
 
 
