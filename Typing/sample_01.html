@@ -11,8 +11,9 @@
 	var failure_count = 0;		//失敗数
 	var count = 1;				//問題数
 	var combo = 0;				//コンボ数（成功単語数）
+	var MaxCombo = 0;			//最大根母数
 	var conboFlag = true;		//ある単語入力中にミスした場合、その単語を打ち終わってもcomboは発動しない！
-	var TimerStart = 10;          //タイマの開始値
+	var TimerStart = 20;          //タイマの開始値
 	var Timer      = TimerStart   //カウントダウンタイマ
 	var Wait       = 1000;        //待ち時間（ミリ秒）
 	var index;					  //語句配列用変数
@@ -59,18 +60,28 @@
 		"モルモット","ヤギ","ヤマアラシ","ライオン","ラクダ","ラマ",
 		"リス","ロバ"
 	);
-
-	function init() {
+	
+	function hensu_sengen(){
 		combo = 0;
 		count = 1;
-  		word.innerHTML = next();	//乱数で選ばれた問題配列の中の１つをラベルに
-		jp_word.innerHTML = next2();//日本語
-  		q_num.innerHTML = count;			//問題数を更新
-		combocount.innerHTML = combo; //リセットボタン押したときにコンボ数が0になる
+		successful_count = 0;
+		failure_count = 0;
+		MaxCombo = 0;
+  		q_num.innerHTML = count;						//カウントリセット
+		combocount.innerHTML = combo; 					//コンボ数リセット
+		success.innerHTML = successful_count;			//正解数をリセット
+  		failed.innerHTML = failure_count;				//失敗数をリセット
+		maxCombo.innerHTML = MaxCombo;					//最大コンボ数リセット	
+	}
+
+	function init() {
+  		word.innerHTML = "sampel";						//乱数で選ばれた問題配列の中の１つをラベルに
+		jp_word.innerHTML = "サンプル";					//日本語
+		hensu_sengen();
 		clearTimeout();
 		Timer = 0;
 		TimerFlag = true;
-		//ResetFlag = false;
+		ResetFlag = false;
 	}
 
 function keyDown() {
@@ -84,8 +95,13 @@ function keyDown() {
     			if (text.length == 0) {					//text（問題）の長さが０なら
 					if(conboFlag == false)
 						combo = 0;	
-					else
-						combo++;		
+					else{
+						combo++;	
+						if(combo > MaxCombo){
+							MaxCombo = combo;
+							maxCombo.innerHTML = MaxCombo;	
+						}
+					}
 					text = next();						//次の問題を作る
 					text2 = next2();					//次の問題を作る(日本語)
 					count++;	
@@ -122,8 +138,12 @@ function keyDown() {
 	//開始
 	function hogeStart() {
 		if(TimerFlag == true){
+			hensu_sengen();
+			word.innerHTML = next();						//乱数で選ばれた問題配列の中の１つをラベルに
+			jp_word.innerHTML = next2();					//日本語
 	    	Timer = TimerStart;
 			TimerFlag = false;
+			ResetFlag = true;
     		setTimeout(hogeCountDown, Wait);
 		}else{
 			//タイマーフラグがたってるから何もしない（スタートボタン連打対策）
@@ -144,9 +164,8 @@ function keyDown() {
 	
 	//タイムアップ
 	function timeUp(){
-		if(TimerFlag == true/*&& ResetFlag == true*/){
+		if(TimerFlag == true && ResetFlag == true){
 			jAlert('デザインはcss/jquery.alerts.cssでいじれるよ', 'あてんしょん！');
-	//		ResetFlag = true;
 		}
 	}
 }
