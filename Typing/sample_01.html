@@ -16,9 +16,9 @@
 	var Timer      = TimerStart   //カウントダウンタイマ
 	var Wait       = 1000;        //待ち時間（ミリ秒）
 	var index;					  //語句配列用変数
-	var TimerFlag = true;			//タイマーが動いている間に複数回スタートボタンを押せなくするため
-	var ResetFlag = true;			//リセットボタンが押されたときはアラートを表示しないため
-	
+	var TimerFlag = true;			//タイマーが動いているか管理（true：停止　false：動作）
+	var ResetFlag = true;			//リセットボタンが押されたか管理
+
 
 	var typeTargets = new Array(				//問題配列
  		"STRAWBERRY", "ORANGE","CHERRY","BANANA","APPLE",
@@ -69,7 +69,8 @@
 		combocount.innerHTML = combo; //リセットボタン押したときにコンボ数が0になる
 		clearTimeout();
 		Timer = 0;
-		//TimerFlag = true;
+		TimerFlag = true;
+		//ResetFlag = false;
 	}
 
 function keyDown() {
@@ -77,7 +78,7 @@ function keyDown() {
 		var text2 = jp_word.innerHTML;					//日本語
 		var code = text.substring(0,1);					//text（問題）の１文字目の文字コードを参照
 		var chr = String.fromCharCode(event.keyCode);	//入力されたキーコードを文字列に
-		if(Timer >= 0 && TimerFlag ==true){
+		if(Timer >= 0 && TimerFlag == false){
 			if (chr == code) {							//押されたキーとcode（正解）が真か
     			text = text.substring(1, text.length);	//text（問題）の２文字目から最後までを代入
     			if (text.length == 0) {					//text（問題）の長さが０なら
@@ -122,19 +123,19 @@ function keyDown() {
 	function hogeStart() {
 		if(TimerFlag == true){
 	    	Timer = TimerStart;
-			//TimerFlag = false;
+			TimerFlag = false;
     		setTimeout(hogeCountDown, Wait);
 		}else{
-			//タイマーフラグがたってるから何もしない
+			//タイマーフラグがたってるから何もしない（スタートボタン連打対策）
 		}
 	}
 	
 	//カウントダウン
 	function hogeCountDown() {
    		if (Timer <= 0) {
+			TimerFlag = true;
 			time.innerHTML = '0';
         	clearTimeout();
-			//TimerFlag = true;
 			timeUp();													//アラート表示
     	} else {
 			time.innerHTML = Timer--;
@@ -143,11 +144,9 @@ function keyDown() {
 	
 	//タイムアップ
 	function timeUp(){
-		if(ResetFlag == false){
+		if(TimerFlag == true/*&& ResetFlag == true*/){
 			jAlert('デザインはcss/jquery.alerts.cssでいじれるよ', 'あてんしょん！');
-			//ResetFlag = true;
-		}else{
-			//スタートボタンを押して、タイムアップ前にリセットボタンを押すと何も表示せずにリセットする
+	//		ResetFlag = true;
 		}
 	}
 }
