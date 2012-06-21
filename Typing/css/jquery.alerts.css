@@ -31,7 +31,7 @@
 
 /* アラート本文の画像 */
 #popup_content {
-	background: 16px 16px no-repeat url(../img/info.gif);/*あとでいじるたぶん*/
+	background: 18px 27px no-repeat url(../img/m.gif);/*あとでいじるたぶん*/
 	margin: 0px;
 }
 
