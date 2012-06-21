@@ -13,14 +13,13 @@
 	var combo = 0;				//コンボ数（成功単語数）
 	var MaxCombo = 0;			//最大根母数
 	var conboFlag = true;		//ある単語入力中にミスした場合、その単語を打ち終わってもcomboは発動しない
-	var TimerStart = 60;          //タイマの開始値
+	var TimerStart = 60;          //タイマの開始値 デフォルト６０
 	var Timer      = TimerStart   //カウントダウンタイマ
 	var Wait       = 1000;        //待ち時間（ミリ秒）
 	var index;					  //語句配列用変数
 	var TimerFlag = true;			//タイマーが動いているか管理（true：停止　false：動作）
 	var ResetFlag = true;			//リセットボタンが押されたか管理
-	var t = 0;
-	
+
 	//問題配列
 	var typeTargets = new Array(				
  		"STRAWBERRY", "ORANGE","CHERRY","BANANA","APPLE",
@@ -65,11 +64,11 @@
 	
 	//変数初期化と表示
 	function hensu_sengen(){
+		word.innerHTML = "sampel";						//乱数で選ばれた問題配列の中の１つをラベルに
+		jp_word.innerHTML = "サンプル";					//日本語
+		Timer = 0;
 		combo = 0;
 		count = 1;
-		successful_count = 0;
-		failure_count = 0;
-		MaxCombo = 0;
   		q_num.innerHTML = count;
 		combocount.innerHTML = combo; 
 		success.innerHTML = successful_count;
@@ -79,11 +78,11 @@
 	
 	//初期状態とリセットボタンが押されたとき
 	function init() {
-  		word.innerHTML = "sampel";						//乱数で選ばれた問題配列の中の１つをラベルに
-		jp_word.innerHTML = "サンプル";					//日本語
 		hensu_sengen();
+		successful_count = 0;		//　※この３つはhensu_sengen()に書くとresultが間抜けになる
+		failure_count = 0;
+		MaxCombo = 0;
 		clearTimeout();
-		Timer = 0;
 		TimerFlag = true;
 		ResetFlag = false;
 	}
@@ -102,10 +101,10 @@
 						combo = 0;	
 					}else{
 						combo++;	
-						if(combo % 5 == 0){
+						if(combo % 5 == 0){				//コンボ数が５で割り切れると３秒追加
 							Timer = Timer + 3;
 							time_plus.innerHTML = "＋３秒";
-							t = Timer;
+							$("#time_plus").fadeIn(500);$("#time_plus").fadeOut(3000)
 						}
 						if(combo > MaxCombo){			//コンボ数更新
 							MaxCombo = combo;
@@ -119,9 +118,9 @@
 				}
     		word.innerHTML = text;						//問題を表示
 			jp_word.innerHTML = text2;  				//問題を表示(日本語)
-    		successful_count++;							//正解数に＋１
+    		successful_count++;							//正解数
   			}else {		//打ち間違い時の処理
-  				failure_count++;						//失敗数に＋１
+  				failure_count++;						//失敗数
 				combo = 0;
 				conboFlag = false;						//コンボ数リセット
 			}
@@ -135,7 +134,7 @@
 
 	//次の問題を作る	
 	function next() {
-		index = Math.round(Math.random() * (typeTargets.length - 1));	//乱数生成
+		index = Math.floor(Math.random() * (typeTargets.length - 1));	//乱数生成
   		return typeTargets[index];										//問題配列[乱数]
 	}
 	
@@ -149,6 +148,9 @@
 	function hogeStart() {
 		if(TimerFlag == true){
 			hensu_sengen();
+			successful_count = 0;					//※この３つはhensu_sengen()に書くとresultが間抜けになる
+			failure_count = 0;
+			MaxCombo = 0;
 			word.innerHTML = next();						//乱数で選ばれた問題配列の中の１つをラベルに
 			jp_word.innerHTML = next2();					//日本語
 	    	Timer = TimerStart;
@@ -168,8 +170,6 @@
         	clearTimeout();
 			timeUp();													//アラート表示
     	} else {
-			if(t-2 == Timer)
-				time_plus.innerHTML = "";
 			time.innerHTML = Timer--;
         	setTimeout(hogeCountDown, Wait);
     }
@@ -177,9 +177,20 @@
 	//タイムアップ
 	function timeUp(){
 		if(TimerFlag == true && ResetFlag == true){
+			$("#result").fadeIn(3000);
+			success.innerHTML = successful_count;
+			failed.innerHTML = failure_count;
+			maxCombo.innerHTML = MaxCombo;
+			
 			jAlert('ゲーム終了だぞｍ9っ｀Д´)', 'ゲーム終了！');
+		
+			$('#btn_result').click(function(){
+				$('#result').fadeOut(1000);
+				hensu_sengen();
+			});
 		}
-	}						
+	}		
+
 }
 </script>
 <link href="css/sample_01.css" rel="stylesheet" type="text/css">
@@ -239,7 +250,8 @@
     	<div class="box_result">
       	<li>成功数：<span id="success">0</span></li>
   	    <li>失敗数：<span id="failed">0</span></li>
-    	  <li>最大コンボ数：<span id="maxCombo">0</span></li>
+    	<li>最大コンボ数：<span id="maxCombo">0</span></li>
+        <li><button id="btn_result" onClick="result()">ＯＫ</button></li>  
     	</div>
     </div>
   <!--入力結果の表示ここまで-->
