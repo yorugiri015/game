@@ -1,0 +1,99 @@
+@charset "utf-8";
+/* CSS Document */
+
+* {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	font-family:"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}
+
+#wrap {
+	width: 800px;
+	height: 100%;
+	margin: 0px auto;
+}
+
+header {
+	width: 800px;
+	height: 150px;
+	margin: 10px auto;
+}
+
+header img {
+	border: none;
+}
+
+.div_navtext {
+	width: 300px;
+	height: 50px;
+	text-align: center;
+	margin: 10px auto 0px auto;
+}
+
+nav {
+	width: 660px;
+	height: 40px;
+	margin: 20px auto 60px auto;
+}
+
+nav li {
+	float: left;
+	margin: 0px 15px;
+	font-size: 140%;
+	text-align:center;
+}
+
+.div_write {
+	width: 780px;
+	padding: 20px 10px 10px 10px;
+	margin: 0px 0px 300px 0px;
+}
+
+p{
+	margin-bottom: 0.2em;
+	margin-left: 1.6em;
+}
+
+.back_top{
+	margin: 30px 0px 0px 0px;
+	text-align: right;
+}
+
+.div_prof {
+	float: left;
+	width: 380px;
+	height: 100px;
+	margin: 20px 0px 0px 10px;
+}
+
+.div_prof p{
+	margin: 0.5em 0em 0em 1em;
+}
+
+.div_write li{
+	margin: 1em 2em;
+	list-style: square;
+}
+
+h2 {
+	padding: 10px 0px 0px 10px;
+	font-size:24px;
+	border-bottom: dashed 1px #999;
+	color: #333;
+}
+
+h3 {
+	padding: 2em 0em 0.7em 1em;
+}
+
+h4 {
+	font-weight: normal;
+}
+
+a :hover{
+	/*ホバー時に少し透過させる*/
+	opacity:0.7;
+	position: relative;
+	top: 1px;
+}
