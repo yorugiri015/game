@@ -2,21 +2,22 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Typing Game Sample</title>
+<title>Typing Game</title>
 <script type="text/javascript" src="lib/jquery.js"></script>
 <script type="text/javascript" src="lib/jquery.alerts.js"></script>
 <link rel="stylesheet" href="css/jquery.alerts.css" type="text/css" />
 <script language="javascript">
-	var successful_count = 0;	//成功数
-	var failure_count = 0;		//失敗数
-	var count = 1;				//問題数
-	var combo = 0;				//コンボ数（成功単語数）
-	var MaxCombo = 0;			//最大根母数
-	var conboFlag = true;		//ある単語入力中にミスした場合、その単語を打ち終わってもcomboは発動しない
-	var TimerStart = 60;          //タイマの開始値 デフォルト６０
-	var Timer      = TimerStart   //カウントダウンタイマ
-	var Wait       = 1000;        //待ち時間（ミリ秒）
-	var index;					  //語句配列用変数
+	
+	var successful_count = 0;		//成功数
+	var failure_count = 0;			//失敗数
+	var count = 1;					//問題数
+	var combo = 0;					//コンボ数（成功単語数）
+	var MaxCombo = 0;				//最大コンボ数
+	var TimerStart = 60;          	//タイマの開始値 デフォルト６０
+	var Timer      = TimerStart   	//カウントダウンタイマ
+	var Wait       = 1000;        	//待ち時間（ミリ秒）
+	var index;					  	//語句配列用変数
+	var conboFlag = true;			//単語入力中にミスをした場合、その単語を打ち終わってもcomboは発動しないため
 	var TimerFlag = true;			//タイマーが動いているか管理（true：停止　false：動作）
 	var ResetFlag = true;			//リセットボタンが押されたか管理
 
@@ -41,7 +42,7 @@
 		"SQUIRREL","DONKEY"
 	);
 	
-	//問題の意味
+	//問題の日本語訳配列
 	var typeTargetsJapanese = new Array(				
  		"いちご", "みかん","さくらんぼ","ばなな","りんご",
 		"グレープフルーツ","パイナップル","スイカ","ぶどう","ラズベリー",
@@ -64,8 +65,10 @@
 	
 	//変数初期化と表示
 	function hensu_sengen(){
-		word.innerHTML = "sampel";						//乱数で選ばれた問題配列の中の１つをラベルに
+		word.innerHTML = "sample";						//乱数で選ばれた問題配列の中の１つをラベルに
 		jp_word.innerHTML = "サンプル";					//日本語
+		input_word.innerHTML = "★";
+		$('#input_word').hide();
 		Timer = 0;
 		combo = 0;
 		count = 1;
@@ -79,9 +82,9 @@
 	//初期状態とリセットボタンが押されたとき
 	function init() {
 		hensu_sengen();
-		successful_count = 0;		//　※この３つはhensu_sengen()に書くとresultが間抜けになる
-		failure_count = 0;
-		MaxCombo = 0;
+		successful_count = 0;	/*	この３つは				*/
+		failure_count = 0;		/*	hensu_sengen()に書くと	*/
+		MaxCombo = 0;			/*	resultが間抜けになる	*/
 		clearTimeout();
 		TimerFlag = true;
 		ResetFlag = false;
@@ -90,21 +93,25 @@
 	//キーが押されたときの処理
 	function keyDown() {
 		var text = word.innerHTML;	
-		var text2 = jp_word.innerHTML;					
+		var text2 = jp_word.innerHTML;				
 		var code = text.substring(0,1);					//text（問題）の１文字目の文字コードを参照
 		var chr = String.fromCharCode(event.keyCode);	//入力されたキーコードを文字列に
-		if(Timer >= 0 && TimerFlag == false){
+		var input = chr;
+		input_word.innerHTML = 	input;
+		if(Timer >= 0 && TimerFlag == false){			//まだ時間が残っているか
 			if (chr == code) {							//押されたキーとcode（正解）が真か
-    			text = text.substring(1, text.length);	//text（問題）の２文字目から最後までを代入
+    			$('#input_word').hide();
+				text = text.substring(1, text.length);	//text（問題）の２文字目から最後までを代入
     			if (text.length == 0) {					//text（問題）の長さが０なら
-					if(conboFlag == false){
+					if(conboFlag == false){			
 						combo = 0;	
 					}else{
 						combo++;	
 						if(combo % 5 == 0){				//コンボ数が５で割り切れると３秒追加
 							Timer = Timer + 3;
 							time_plus.innerHTML = "＋３秒";
-							$("#time_plus").fadeIn(500);$("#time_plus").fadeOut(3000)
+							$("#time_plus").fadeIn(500);
+							$("#time_plus").fadeOut(3000);
 						}
 						if(combo > MaxCombo){			//コンボ数更新
 							MaxCombo = combo;
@@ -119,10 +126,11 @@
     		word.innerHTML = text;						//問題を表示
 			jp_word.innerHTML = text2;  				//問題を表示(日本語)
     		successful_count++;							//正解数
-  			}else {		//打ち間違い時の処理
+  			}else if (chr != code){					//打ち間違い時の処理
+				$('#input_word').show();				//間違って打った文字を表示
   				failure_count++;						//失敗数
 				combo = 0;
-				conboFlag = false;						//コンボ数リセット
+				conboFlag = false;						//コンボリセット
 			}
 		}
 	
@@ -147,10 +155,10 @@
 	//タイマースタート
 	function hogeStart() {
 		if(TimerFlag == true){
-			hensu_sengen();
-			successful_count = 0;					//※この３つはhensu_sengen()に書くとresultが間抜けになる
-			failure_count = 0;
-			MaxCombo = 0;
+			hensu_sengen();		
+			successful_count = 0;	/*	この３つは				*/
+			failure_count = 0;		/*	hensu_sengen()に書くと	*/
+			MaxCombo = 0;			/*	resultが間抜けになる	*/
 			word.innerHTML = next();						//乱数で選ばれた問題配列の中の１つをラベルに
 			jp_word.innerHTML = next2();					//日本語
 	    	Timer = TimerStart;
@@ -168,7 +176,7 @@
 			TimerFlag = true;
 			time.innerHTML = '0';
         	clearTimeout();
-			timeUp();													//アラート表示
+			timeUp();										//アラート表示
     	} else {
 			time.innerHTML = Timer--;
         	setTimeout(hogeCountDown, Wait);
@@ -193,7 +201,7 @@
 
 }
 </script>
-<link href="css/sample_01.css" rel="stylesheet" type="text/css">
+<link href="css/TypingGame.css" rel="stylesheet" type="text/css">
 <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
 </head>
 
@@ -202,59 +210,66 @@
 	<!--ゲーム画面全体ここから-->
 	<div id="game_wrap">
        
-     <div class="speech_buble">
+   		<!-- 吹き出しここから -->
+   		<div class="speech_buble">
      
-     	<div id="div_time">
-      	あと <span id="time">0</span> 秒！
-        <span id="time_plus"></span>
-      </div>
+    		<div id="div_time">
+      			あと <span id="time">0</span> 秒！
+        		<span id="time_plus"></span>
+      		</div>
      	
-      <div id="div_combo">
-      	<span id="combocount">0</span> コンボ！
-      </div>
+			<div id="div_combo">
+    			<span id="combocount">0</span> コンボ！
+			</div>
+    
+		</div>
+     	<!-- 吹き出しここまで -->
+    
+    
+    	<!--問題数の表示ここから-->
+		<div id="question">
+    		<div id="dai">第</div>
+      		<div id="q_num"></div>
+      		<div id="mon">問</div>
+   		</div>
+    	<!--問題数の表示ここまで-->
+    
+	    <!--単語の表示ここから-->
+		<div id="word_box">
+    		<!--↓idを指定して単語を入れ替え（日本語）-->
+    		<div id="jp_word"></div>
+    		<!--英語-->
+    		<span id="word"></span>
+            <!--入力文字-->
+    		<div id="input_word"></div>
+		</div>
+    	<!--単語の表示ここまで-->
+     
+		<!--ボタンここから-->
+     	<div id="button_left">
+      		<a><button id="btn_start" onClick="hogeStart()">
+            <i class="icon-white icon-play"></i> 　スタート　</button></a>
+		</div>
         
-    	</div>
-     
-    
-    <!--問題数の表示ここから-->
-    <div id="question">
-    	<div id="dai">第</div>
-      <div id="q_num"></div>
-      <div id="mon">問</div>
+     	<div id="button_right">
+     		<a><button id="btn_reset" onClick="init()">
+            <i class="icon-white icon-repeat"></i> 　リセット　</button></a>
+     	</div>
+    	<!--ボタンここまで-->
+	
     </div>
-    <!--問題数の表示ここまで-->
-    
-    <!--単語の表示ここから-->
-    <div id="word_box">
-    	<!--↓idを指定して単語を入れ替え？（日本語）-->
-    	<div id="jp_word"></div>
-    	<!--↓idを指定して単語を入れ替え？-->
-    	<span id="word"></span>
-    </div>
-    <!--単語の表示ここまで-->
-     
-  <!--ボタンここから-->
-     <div id="button_left">
-      <a><button id="btn_start" onClick="hogeStart()"><i class="icon-white icon-play"></i> 　スタート　</button></a>
-     </div>
-     <div id="button_right">
-     	<a><button id="btn_reset" onClick="init()"><i class="icon-white icon-repeat"></i> 　リセット　</button></a>
-     </div>
-    <!--ボタンここまで-->
-     
-  </div>
-  <!--ゲーム画面全体ここまで-->
+	<!--ゲーム画面全体ここまで-->
   
 	<!--入力結果の表示ここから-->
   	<div id="result">
     	<div class="box_result">
-      	<li>成功数：<span id="success">0</span></li>
-  	    <li>失敗数：<span id="failed">0</span></li>
-    	<li>最大コンボ数：<span id="maxCombo">0</span></li>
-        <li><button id="btn_result" onClick="result()">ＯＫ</button></li>  
+      		<li>成功数：<span id="success">0</span></li>
+  	    	<li>失敗数：<span id="failed">0</span></li>
+    		<li>最大コンボ数：<span id="maxCombo">0</span></li>
+        	<li><button id="btn_result" onClick="result()">ＯＫ</button></li>  
     	</div>
     </div>
-  <!--入力結果の表示ここまで-->
+	<!--入力結果の表示ここまで-->
 
 </body>
 </html>

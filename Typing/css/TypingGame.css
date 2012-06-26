@@ -126,6 +126,17 @@
 	color:#666;
 }
 
+/*現在入力中の文字表記のdiv*/
+#input_word{
+	width:600px;
+	height:10px;
+	font-size:25px;
+	color:#F00;
+	margin-top:-135px;
+
+}
+
+
 /*スタートボタン（左）を左揃え*/
 #button_left {
 	clear: both;
