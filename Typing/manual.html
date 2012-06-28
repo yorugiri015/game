@@ -4,26 +4,27 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>タイピングゲームの説明書</title>
 <link href="css/manual.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="lib/jquery.js"></script>
+<script type="text/javascript" src="lib/yuga.js" charset="utf-8"></script>
 </head>
 
 <body>
 
 
   <header>
-  	<span id="top">
-    <a href="typing.html"><img src="img/type_logo.png"></a>
-    </span>
+  	<span id="top"></span>
+    <a href="typing.html"><img src="img/type_logo.png" class="btn"></a>
   </header>
 
   
   <nav>
-  <li>★</li>
-  <li><a href="#menu01">How to Play</a></li>
-  <li>★</li>
-  <li><a href="#menu02">Developer</a></li>
-  <li>★</li>
-  <li><a href="#menu03">Special Thanks</a></li>
-  <li>★</li>
+  <li>☆</li>
+  <li><a href="#menu01" class="pink">How to Play</a></li>
+  <li>☆</li>
+  <li><a href="#menu02" class="orange">Developer</a></li>
+  <li>☆</li>
+  <li><a href="#menu03" class="green">Special Thanks</a></li>
+  <li>☆</li>
   </nav>
   
 <div id="wrap">
@@ -32,19 +33,23 @@
   
   <h2 id="menu01">How to Play</h2>
   <div class="div_write">
-  	<p>「Typing Game」は、英単語をタイピングするシンプルなゲームです。</p>
+  	<h4>「Typing Game」は、英単語をタイピングするシンプルなゲームです。</h4>
+    
+    <h3>動作環境について</h3>
+    <p><span class="marker">Google Chrome</span>で動作します！</p>
+    <p>それ以外のブラウザでは動作しません。</p>
     
     <h3>正確に入力しよう</h3>
     <p>ミスなく入力することで、コンボが増加します。</p>
-    <p>コンボが続くと、制限時間もちょっとだけ伸びます。</p>
+    <p>コンボが続くと、<span class="marker">制限時間もちょっとだけ伸びます。</span></p>
     
     <h3>制限時間は60秒</h3>
-    <p>ゲームはタイムアタック制。</p>
+    <p>ゲームは<span class="marker">タイムアタック</span>制。</p>
     <p>限られた時間の中でどこまで入力できるでしょうか！？</p>
     
     <h3>スペースも入力して</h3>
     <p>問題によっては、単語と単語の間にはスペース（空白）があるものも。</p>
-    <p>そんな時はしっかりスペースも入力してくださいね。</p>
+    <p>そんな時はしっかり<span class="marker">スペースも入力して</span>くださいね。</p>
     
     <p class="back_top"><a href="#top">▲トップに戻る</a></p>
     
@@ -55,25 +60,25 @@
   <div class="div_write">
   
   	<div class="div_prof">
-    <h4>(´☣益☣)</h4>
+    <h4 class="orange">(´☣益☣)</h4>
       <p>JavaScript担当。</p>
       <p>清楚なみかんちゃんとはワタクシのことよ！</p> 
     </div>
     
     <div class="div_prof">
-    <h4>（・Ｈ・）</h4>
+    <h4 class="skyblue">（・Ｈ・）</h4>
     	<p>JavaScript担当。</p>
       <p>ねこもふらせろおおおおおおおおおおおおお</p>
     </div>
     
     <div class="div_prof">
-    <h4>✌( ՞ਊ ՞)✌</h4>
+    <h4 class="green">└( ＾ω＾ )」</h4>
     	<p>プロデューサー。</p>
       <p>俺に読めない単語はない。</p>
     </div>
     
     <div class="div_prof">
-    <h4>○⌒(・◇・З)Э</h4>
+    <h4 class="pink">○⌒(・◇・З)Э</h4>
     <p>HTMLとCSS担当。</p>
     <p>陸に上がると内臓出ちゃう系。</p>
     </div> 
@@ -95,6 +100,10 @@
     … ボタンのスタイル作成</li>
     <li><a href="http://www.abeautifulsite.net/blog/2008/12/jquery-alert-dialogs/" title="jQuery Alert Dialogs (Alert, Confirm, & Prompt Replacements)">A Beautiful Site</a>
     … アラート画面CSS</li>
+    <li><a href="http://www.kyosuke.jp/yugajs/" title="yuga.js">yuga.js</a>
+    … JavaScript</li>
+    <li><a href="http://jquery.com/" title="jQuery">jQuery</a>
+    … jQuery</li>
 
 <p class="back_top"><a href="#top">▲トップに戻る</a></p>
 
