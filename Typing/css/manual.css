@@ -24,31 +24,22 @@ header img {
 	border: none;
 }
 
-.div_navtext {
-	width: 300px;
-	height: 50px;
-	text-align: center;
-	margin: 10px auto 0px auto;
-}
-
 nav {
 	width: 800px;
 	height: 40px;
-	margin: 0px 100px 60px auto;
+	margin: 0px auto 60px auto;
+
 }
 
 nav li {
 	float: left;
-	margin: 0px 10px;
-	font-size: 140%;
-
 }
 
 .div_write {
 	width: 780px;
 	padding: 20px 10px 10px 10px;
-	margin: 0px 0px 300px 0px;
-	border-bottom: #999 dashed 1px;
+	margin: 0px 0px 350px 0px;
+	border-bottom: #999 dotted 1px;
 }
 
 p{
@@ -84,10 +75,10 @@ p{
 h2 {
 	padding: 10px 0px 0px 10px;
 	font-size:24px;
-	border-bottom: dashed 1px #999;
 	color: #333;
 	text-shadow: 1px 1px 2px #CCC;
 	text-align:right;
+	border-bottom: #999 dotted 1px;
 }
 
 h3 {
