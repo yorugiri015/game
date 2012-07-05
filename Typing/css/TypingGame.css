@@ -13,7 +13,7 @@
 /*ゲーム画面全体*/
 #game_wrap {
 	margin: 50px auto 0px auto;
-	width: 600px;
+	width: 700px;
 	height: 400px;
 }
 
@@ -107,7 +107,7 @@
 #word_box {
 	float: left;
 	margin: 0px 0px 0px 0px;
-	width: 600px;
+	width: 700px;
 	height: 200px;
 	border:#69C solid 2px;
 	color: #000;
@@ -128,7 +128,7 @@
 
 /*現在入力中の文字表記のdiv*/
 #input_word{
-	width:600px;
+	width:700px;
 	height:10px;
 	font-size:25px;
 	color:#F00;
@@ -227,6 +227,14 @@ a :hover{
 #result li {
 	padding: 20px 20px 20px 20px;
 	font-size: 30px;
+}
+
+#div_space {
+	float: left;
+	width: 30px;
+	height: 30px;
+	margin: -100px 0px 0px 200px;
+	background:#03C;
 }
 
 
