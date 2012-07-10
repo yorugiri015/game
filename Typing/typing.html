@@ -21,89 +21,96 @@
 	var TimerFlag = true;			//タイマーが動いているか管理（true：停止　false：動作）
 	var ResetFlag = true;			//リセットボタンが押されたか管理
 
-	//問題配列
-	var typeTargets = new Array(				
- 		"ORANGE","CHERRY","BANANA","APPLE",
-		"GRAPE",
-		"MUSCAT","MELON","PEACH","LEMON",
-		"COCONUT","DURIAN","PAPAYA","MANGO",
-		"AVOCADO","APRICOT","KIWI","YUZU","LIME",
-		"AYEAYE","RACCOON","DOG","RABBIT","HORSE",
-		"BULL","WOLF","ORANGUTAN","ROOSTER",
-		"PLATYPUS","KANGAROO","FOX","GIRAFFE","BEAR","KOALA",
-		"PUPPY","KITTEN","COYOTE","GORILLA",
-		"MONKEY","DEER","ZEBRA","CHIPMUNK",
-		"BUFFALO","SKUNK","ELEPHANT",
-		"RAT","TIGER","SLOTH","COW",
-		"CAT","HYENA","MOUSE","HAMSTER","HEDGEHOG",
-		"PANDA","BEAVER","SHEEP","BABOON","LEOPARD",
-		"FERRET","OPOSSUM","PIG","HEN","MOLE",
-		"GOAT","PORCUPINE","LION","CAMEL","LLAMA",
-		"SQUIRREL","DONKEY"
-	);
-	
-	//問題の日本語訳配列
-	var typeTargetsJapanese = new Array(				
- 		"みかん","さくらんぼ","ばなな","りんご",
-		"ぶどう",
-		"マスカット","メロン","もも","レモン",
-		"ココナッツ","ドリアン","パパイヤ","マンゴー",
-		"アボカド","アプリコット","キウイ","ゆず","ライム",
-		"アイアイ","アライグマ","犬","うさぎ","馬",
-		"雄牛","オオカミ","オランウータン","雄鶏",
-		"カモノハシ","カンガルー","キツネ","キリン","熊","コアラ",
-		"子犬","子猫","コヨーテ","ゴリラ",
-		"猿","シカ","シマウマ","シマリス",
-		"スイギュウ","スカンク","ゾウ",
-		"ネズミ","トラ","ナマケモノ","乳牛",
-		"ネコ","ハイエナ","ハツカネズミ","ハムスター","ハリネズミ",
-		"パンダ","ビーバー","ヒツジ","ヒヒ","ヒョウ",
-		"フェレット","フクロネズミ","豚","雌鳥","モグラ",
-		"ヤギ","ヤマアラシ","ライオン","ラクダ","ラマ",
-		"リス","ロバ"
-	);
-	
-	//長めの単語配列
-	var typeTargets02 = new Array(
-		"STRAWBERRY" , "GRAPEFRUIT", "PINEAPPLE"  , "WATERMELON" , "RASPBERRY"  ,
-		"BLUEBERRY" , "MUSKMELON" , "PERSIMMON" , "POMEGRANATE" , "KIDNEY BEAN", 
-		"CAULIFLOWER" , "SWEET POTATO" , "PASSION FRUIT" ,
-		"PAPUA NEW GUINEA" , "UNITED STATES OF AMERICA", "DOMINICAN REPUBLIC", "AFGHANISTAN","NETHERLANDS"  ,
-		"LUXEMBOURG" , "PHILIPPINES" ,"SAUDI ARABIA"  , "REPUBLIC OF UZBEKISTAN", 
-		"EQUATORIAL GUINEA" , "KAZAKHSTAN" ,"LIBYAN ARAB JAMAHIRIYA", 
-		"LIECHTENSTEIN", "MADAGASCAR", "TRINIDAD AND TOBAGO" ,"SAINT VINCENT AND THE GRENADINES", 
-		"RUSSIAN FEDERATION", "VENEZUELA","RHYTHMIC GYMNASTICS" ,"SKATEBOARDING"  ,
-		"FIGURE SKATING", "CHEERLEADING","VAULTING HORSE","AMERICAN FOOTBALL", 
-		"TABLE TENNIS", "RACEWALKING", "SYNCHRONIZED SWIMMING","SNOWMOBILING","TOURNAMENT", 
-		"SNOWBALL FIGHT", "MOUNTAIN CLIMBING", "BUILDING BLOCK","ARMADILLO","HIPPOPOTAMUS",
-		"RHINOCEROS" ,"SIAMESE CAT", "CHIMPANZEE", "DOBERMAN PINSCHER", "PRAIRIE DOG" ,"GUINEA PIG",
-		"COMMEMORATION","CONSTELLATION","ALPINE SKIING","PROFESSIONAL WRESTLING","JAPANESE ZELKOVA",
-		"CHINESE BELLFLOWER","CHRYSANTHEMUM","RAPE BLOSSOMS","LACQUER TREE","RHODODENDRON",
-		"TRANSVAAL DAISY","JAPANESE CEDAR","MANDARIN DUCK","JAPANESE CRESTED IBIS","WOODPECKER",
-		"MIGRATING BIRDS","INTERIOR DESIGNER","AESTHETICIAN","SMORGASBORD","SALAMANDER",
-		"ANNOUNCER","BULLDOZER","MOTORCYCLE","THOROUGHBRED","RATTLESNAKE"
+	var typeTargets;
+	var typeTargetsJapanese;
 
-	);
+	function hairetsu_Easy(){
+			//問題配列
+		typeTargets = new Array(	
+			"ORANGE","CHERRY","BANANA","APPLE","GRAPE",
+			"MUSCAT","MELON","PEACH","LEMON",
+			"COCONUT","DURIAN","PAPAYA","MANGO",
+			"AVOCADO","APRICOT","KIWI","YUZU","LIME",
+			"AYEAYE","RACCOON","DOG","RABBIT","HORSE",
+			"BULL","WOLF","ORANGUTAN","ROOSTER",
+			"PLATYPUS","KANGAROO","FOX","GIRAFFE","BEAR","KOALA",
+			"PUPPY","KITTEN","COYOTE","GORILLA",
+			"MONKEY","DEER","ZEBRA","CHIPMUNK",
+			"BUFFALO","SKUNK","ELEPHANT",
+			"RAT","TIGER","SLOTH","COW",
+			"CAT","HYENA","MOUSE","HAMSTER","HEDGEHOG",
+			"PANDA","BEAVER","SHEEP","BABOON","LEOPARD",
+			"FERRET","OPOSSUM","PIG","HEN","MOLE",
+			"GOAT","PORCUPINE","LION","CAMEL","LLAMA",
+			"SQUIRREL","DONKEY"
+		);
 	
-	var typeTargets02_jp = new Array(
+		typeTargetsJapanese = new Array(		
+			"みかん","さくらんぼ","ばなな","りんご","ぶどう",
+			"マスカット","メロン","もも","レモン",
+			"ココナッツ","ドリアン","パパイヤ","マンゴー",
+			"アボカド","アプリコット","キウイ","ゆず","ライム",
+			"アイアイ","アライグマ","犬","うさぎ","馬",
+			"雄牛","オオカミ","オランウータン","雄鶏",
+			"カモノハシ","カンガルー","キツネ","キリン","熊","コアラ",
+			"子犬","子猫","コヨーテ","ゴリラ",
+			"猿","シカ","シマウマ","シマリス",
+			"スイギュウ","スカンク","ゾウ",
+			"ネズミ","トラ","ナマケモノ","乳牛",
+			"ネコ","ハイエナ","ハツカネズミ","ハムスター","ハリネズミ",
+			"パンダ","ビーバー","ヒツジ","ヒヒ","ヒョウ",
+			"フェレット","フクロネズミ","豚","雌鳥","モグラ",
+			"ヤギ","ヤマアラシ","ライオン","ラクダ","ラマ",
+			"リス","ロバ"
+		);
+	}
+	
+	function hairetsu_Difficult(){
+			//長めの単語配列
+		typeTargets = new Array(
+				"STRAWBERRY" , "GRAPEFRUIT", "PINEAPPLE" , "WATERMELON" , "RASPBERRY" ,
+				"BLUEBERRY" , "MUSKMELON" , "PERSIMMON" , "POMEGRANATE" , "KIDNEY BEAN",
+				"CAULIFLOWER" , "SWEET POTATO" , "PASSION FRUIT" ,
+				"PAPUA NEW GUINEA" , "UNITED STATES OF AMERICA", "DOMINICAN REPUBLIC", 
+				"AFGHANISTAN","NETHERLANDS" ,
+				"LUXEMBOURG" , "PHILIPPINES" ,"SAUDI ARABIA" , "REPUBLIC OF UZBEKISTAN",
+				"EQUATORIAL GUINEA" , "KAZAKHSTAN" ,"LIBYAN ARAB JAMAHIRIYA",
+				"LIECHTENSTEIN", "MADAGASCAR", "TRINIDAD AND TOBAGO" ,
+				"SAINT VINCENT AND THE GRENADINES",
+				"RUSSIAN FEDERATION", "VENEZUELA","RHYTHMIC GYMNASTICS" ,"SKATEBOARDING" ,
+				"FIGURE SKATING", "CHEERLEADING","VAULTING HORSE","AMERICAN FOOTBALL",
+				"TABLE TENNIS", "RACEWALKING", "SYNCHRONIZED SWIMMING","SNOWMOBILING","TOURNAMENT",
+				"SNOWBALL FIGHT", "MOUNTAIN CLIMBING", "BUILDING BLOCK","ARMADILLO","HIPPOPOTAMUS",
+				"RHINOCEROS" ,"SIAMESE CAT", "CHIMPANZEE", "DOBERMAN PINSCHER", "PRAIRIE DOG" ,"GUINEA PIG",
+				"COMMEMORATION","CONSTELLATION","ALPINE SKIING","PROFESSIONAL WRESTLING","JAPANESE ZELKOVA",
+				"CHINESE BELLFLOWER","CHRYSANTHEMUM","RAPE BLOSSOMS","LACQUER TREE","RHODODENDRON",
+				"TRANSVAAL DAISY","JAPANESE CEDAR","MANDARIN DUCK","JAPANESE CRESTED IBIS","WOODPECKER",
+				"MIGRATING BIRDS","INTERIOR DESIGNER","AESTHETICIAN","SMORGASBORD","SALAMANDER",
+				"ANNOUNCER","BULLDOZER","MOTORCYCLE","THOROUGHBRED","RATTLESNAKE"	
+		);
+	
+		typeTargetsJapanese = new Array(
 		"いちご", "グレープフルーツ", "パイナップル", "スイカ","ラズベリー",
-		"ブルーベリー", "マスクメロン" , "柿", "ザクロ" ,"インゲン豆",
-		"カリフラワー", "サツマイモ", "パッションフルーツ",
-		"パプアニューギニア","アメリカ合衆国","ドミニカ共和国","アフガニスタン","オランダ",
-		"ルクセンブルク","フィリピン","サウジアラビア","ウズベキスタン共和国",
-		"赤道ギニア","カザフスタン","リビア",
-		"リヒテンシュタイン","マダガスカル","トリニダード・ドバコ","セントビンセントおよびグレナディーン諸島",
-		"ロシア連邦","ベネズエラ","新体操","スケートボード",
-		"フィギュアスケート","チアリーディング","跳馬","アメリカンフットボール",
-		"卓球","競歩","シンクロナイズドスイミング","スノーモービル(競技)","トーナメント",
-		"雪合戦","登山","積み木","アルマジロ"  , "カバ",
-		"サイ","シャムネコ"  , "チンパンジー"    , "ドーベルマン", "プレーリードッグ","モルモット",
-		"記念","星座","アルペンスキー","プロレス","ケヤキ",
-		"キキョウ","菊","菜の花","ウルシ","シャクナゲ",
-		"ガーベラ","スギ","オシドリ","トキ","キツツキ",
-		"渡り鳥","インテリアデザイナー","エステティシャン","バイキング","サンショウウオ",
-		"アナウンサー","ブルドーザー","オートバイ","サラブレッド","ガラガラヘビ"
-	);
+				"ブルーベリー", "マスクメロン" , "柿", "ザクロ" ,"インゲン豆",
+				"カリフラワー", "サツマイモ", "パッションフルーツ",
+				"パプアニューギニア","アメリカ合衆国","ドミニカ共和国",
+				"アフガニスタン","オランダ",
+				"ルクセンブルク","フィリピン","サウジアラビア","ウズベキスタン共和国",
+				"赤道ギニア","カザフスタン","リビア",
+				"リヒテンシュタイン","マダガスカル","トリニダード・ドバコ",
+				"セントビンセントおよびグレナディーン諸島",
+				"ロシア連邦","ベネズエラ","新体操","スケートボード",
+				"フィギュアスケート","チアリーディング","跳馬","アメリカンフットボール",
+				"卓球","競歩","シンクロナイズドスイミング","スノーモービル(競技)","トーナメント",
+				"雪合戦","登山","積み木","アルマジロ" , "カバ",
+				"サイ","シャムネコ" , "チンパンジー" , "ドーベルマン", "プレーリードッグ","モルモット",
+				"記念","星座","アルペンスキー","プロレス","ケヤキ",
+				"キキョウ","菊","菜の花","ウルシ","シャクナゲ",
+				"ガーベラ","スギ","オシドリ","トキ","キツツキ",
+				"渡り鳥","インテリアデザイナー","エステティシャン","バイキング","サンショウウオ",
+				"アナウンサー","ブルドーザー","オートバイ","サラブレッド","ガラガラヘビ"
+		);
+	}
 	
 	//変数初期化と表示
 	function hensu_sengen(){
@@ -141,8 +148,12 @@
 		var input = chr;
 		input_word.innerHTML = 	input;
 		if(Timer >= 0 && TimerFlag == false){			//まだ時間が残っているか
+			if(text.substring(1,2) == " "){
+				$("#div_space").fadeIn(500);
+			}
 			if (chr == code) {							//押されたキーとcode（正解）が真か
     			$('#input_word').hide();
+				$('#div_space').fadeOut(2000);
 				text = text.substring(1, text.length);	//text（問題）の２文字目から最後までを代入
     			if (text.length == 0) {					//text（問題）の長さが０なら
 					if(conboFlag == false){			
@@ -251,6 +262,9 @@
 
 	<!--ゲーム画面全体ここから-->
 	<div id="game_wrap">
+    
+     <button id="btn_Easy" onClick="hairetsu_Easy()"> 簡単 </button>
+      <button id="btn_Difficult" onClick="hairetsu_Difficult()"> 難しい </button>
        
    		<!-- 吹き出しここから -->
    		<div class="speech_buble">
