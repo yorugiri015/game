@@ -229,6 +229,7 @@ a :hover{
 	font-size: 30px;
 }
 
+/*入力文字のスペース*/
 #div_space {
 	float: left;
 	width: 60px;
@@ -238,6 +239,15 @@ a :hover{
 	display:none;
 }
 
+
+/*難易度*/
+#div_lv{
+	width:100px;
+	height:30px;
+	font-size:12px;
+	color:#F00;
+	position: absolute;
+}
 
 
 
