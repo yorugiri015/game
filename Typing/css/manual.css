@@ -40,6 +40,7 @@ nav li {
 	padding: 20px 10px 10px 10px;
 	margin: 0px 0px 350px 0px;
 	border-bottom: #999 dotted 1px;
+	border-top: #999 dotted 1px;
 }
 
 p{
@@ -48,7 +49,7 @@ p{
 }
 
 .marker {
-	background-color: #CFC;
+	background-color: #FCF;
 }
 
 .back_top{
@@ -72,19 +73,57 @@ p{
 	list-style: square;
 }
 
+.table_words {
+	border: none;
+	width: 760px;
+	margin: 0px auto;
+}
+
+.table_title {
+	width: 756px;
+	background:#69F;
+	color: #fff;
+	font-size: 100%;
+	text-align: center;
+	margin: 30px auto 0px auto;
+	border: none;
+}
+
+/*英語文字列のセル*/
+.table_eng {
+	width: 190px;
+	padding: 0.3em;
+	background:#F9F9F9;
+}
+
+.table_jpn {
+	width: 190px;
+	padding: 0.3em;
+	background:#fff;
+	border: 1px solid #f9f9f9;
+}
+
+footer {
+	width: 800px;
+	height: 100%;
+	background:#fff;
+	color:#333;
+	text-align:center;
+	padding: 1em 0em;
+	margin: -200px 0px 0px 0px;
+}
+
 h2 {
 	padding: 10px 0px 0px 10px;
 	font-size:24px;
 	color: #333;
 	text-shadow: 1px 1px 2px #CCC;
 	text-align:right;
-	border-bottom: #999 dotted 1px;
 }
 
 h3 {
-	background: url(../img/cake.png) no-repeat center left;
-	margin-left: 10px;
-	padding: 0em 0em 0em 2.5em;
+	background: url(../img/arrow.gif) no-repeat center left;
+	padding: 1em 0em 0.8em 1.7em;
 	margin: 40px 5px 10px 0px;
 	font-weight: bold;
 }
