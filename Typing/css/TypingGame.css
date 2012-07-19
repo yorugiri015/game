@@ -17,6 +17,39 @@
 	height: 400px;
 }
 
+/*難易度ボタン：易しい*/
+#btn_Easy {
+	font-size: 100%;
+	color: #ffffff;
+	padding: 5px 15px;
+	background: -webkit-gradient(
+	linear, left top, left bottom, 
+	from(#F99),
+	to(#F36 ));
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border: 1px solid #F36;
+	text-shadow:
+	1px -1px 0px rgba(189,93,10,0.3),
+	0px 1px 0px rgba(255,255,255,0.4);	
+}
+
+#btn_Difficult {
+	font-size: 100%;
+	color: #ffffff;
+	padding: 5px 15px;
+	background: -webkit-gradient(
+	linear, left top, left bottom, 
+	from(#C9F),
+	to(#93C ));
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border: 1px solid #939;
+	text-shadow:
+	1px -1px 0px rgba(189,93,10,0.3),
+	0px 1px 0px rgba(255,255,255,0.4);	
+}
+
 /*吹き出し*/
 .speech_buble {
 	float: right;
@@ -151,16 +184,11 @@
 	font-size: 14px;
 	color: #ffffff;
 	padding: 10px 20px;
-	background: -moz-linear-gradient(
-		top,
-		#f7b64d 0%,
-		#e78e08);
 	background: -webkit-gradient(
 		linear, left top, left bottom, 
 		from(#ffce2d),
 		to(#f3981d ));
 	border-radius: 5px;
-	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
 	border: 1px solid #edb500;
 	text-shadow:
@@ -180,10 +208,6 @@
 	font-size: 14px;
 	color: #ffffff;
 	padding: 10px 20px;
-	background: -moz-linear-gradient(
-		top,
-		#00e860 0%,
-		#00bf49);
 	background: -webkit-gradient(
 		linear, left top, left bottom, 
 		from(#00e860),
@@ -201,7 +225,6 @@
 a :hover{
 	/*ホバー時に少し透過させる*/
 	opacity:0.8;
-	-moz-opacity:0.8;
 }
 
 
@@ -224,12 +247,26 @@ a :hover{
 	height: 200px;
 }
 
+#btn_result {
+	font-size: 14px;
+	color: #ffffff;
+	padding: 10px 15px;
+	background: -webkit-gradient(
+	linear, left top, left bottom, 
+	from(#69C),
+	to(#36C ));
+	border-radius: 5px;
+	border: 1px solid #009;
+	text-shadow:
+	1px -1px 0px rgba(189,93,10,0.3),
+	0px 1px 0px rgba(255,255,255,0.4);	
+}
+
 #result li {
 	padding: 20px 20px 20px 20px;
 	font-size: 30px;
 }
 
-/*入力文字のスペース*/
 #div_space {
 	float: left;
 	width: 60px;
@@ -247,6 +284,16 @@ a :hover{
 	font-size:12px;
 	color:#F00;
 	position: absolute;
+}
+
+/*マニュアルに戻る*/
+.back_manual {
+	width: 200px;
+	height: 100%;
+	clear: both;
+	margin: 10px auto;
+	color: #333;
+	text-align: center;
 }
 
 

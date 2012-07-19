@@ -261,74 +261,74 @@
 
 <body onkeydown="keyDown()" onLoad="init()">
 
-	<!--ゲーム画面全体ここから-->
-	<div id="game_wrap">
-    
-     <button id="btn_Easy" onClick="hairetsu_Easy()"> 簡単 </button>
-      <button id="btn_Difficult" onClick="hairetsu_Difficult()"> 難しい </button>
-       <div id="div_lv"></div>
-       
-   		<!-- 吹き出しここから -->
-   		<div class="speech_buble">
-     
-    		<div id="div_time">
-      			あと <span id="time">0</span> 秒！
-        		<span id="time_plus"></span>
-      		</div>
-     	
-			<div id="div_combo">
-    			<span id="combocount">0</span> コンボ！
-			</div>
-    
-		</div>
-     	<!-- 吹き出しここまで -->
-    
-    
-    	<!--問題数の表示ここから-->
-		<div id="question">
-    		<div id="dai">第</div>
-      		<div id="q_num"></div>
-      		<div id="mon">問</div>
-   		</div>
-    	<!--問題数の表示ここまで-->
-    
-	    <!--単語の表示ここから-->
-		<div id="word_box">
-    		<!--↓idを指定して単語を入れ替え（日本語）-->
-    		<div id="jp_word"></div>
-    		<!--英語-->
-    		<span id="word"></span>
-            <!--入力文字-->
-    		<div id="input_word"></div>
-		</div>
-    	<!--単語の表示ここまで-->
-      <div id="div_space"></div>
-     
-		<!--ボタンここから-->
-     	<div id="button_left">
-      		<a><button id="btn_start" onClick="hogeStart()">
-            <i class="icon-white icon-play"></i> 　スタート　</button></a>
-		</div>
-        
-     	<div id="button_right">
-     		<a><button id="btn_reset" onClick="init()">
-            <i class="icon-white icon-repeat"></i> 　リセット　</button></a>
-     	</div>
-    	<!--ボタンここまで-->
-	
-    </div>
-	<!--ゲーム画面全体ここまで-->
+<!--ゲーム画面全体ここから-->
+<div id="game_wrap">
+
+  <button id="btn_Easy" onClick="hairetsu_Easy()"> 簡単 </button>
+  <button id="btn_Difficult" onClick="hairetsu_Difficult()"> 難しい </button>
+  <div id="div_lv"><!--現在の難易度を表示--></div>
+
+  <!-- 吹き出しここから -->
+  <div class="speech_buble">
+
+  <div id="div_time">
+  	あと <span id="time">0</span> 秒！
+  	<span id="time_plus"><!--追加秒数表示--></span>
+  </div>
+
+  <div id="div_combo">
+  <span id="combocount">0</span> コンボ！
+  </div>
   
-	<!--入力結果の表示ここから-->
-  	<div id="result">
-    	<div class="box_result">
-      		<li>成功数：<span id="success">0</span></li>
-  	    	<li>失敗数：<span id="failed">0</span></li>
-    		<li>最大コンボ数：<span id="maxCombo">0</span></li>
-        	<li><button id="btn_result" onClick="result()">ＯＫ</button></li>  
-    	</div>
-    </div>
-	<!--入力結果の表示ここまで-->
+  </div>
+  <!-- 吹き出しここまで -->
+
+
+  <!--問題数の表示ここから-->
+  <div id="question">
+    <div id="dai">第</div>
+    <div id="q_num"></div>
+    <div id="mon">問</div>
+  </div>
+  <!--問題数の表示ここまで-->
+  
+  <!--単語の表示ここから-->
+  <div id="word_box">
+	  <div id="jp_word"><!--単語(日本語)表示--></div>
+  	<span id="word"><!--単語(英語)表示--></span>
+  	<div id="input_word"><!--入力文字表示--></div>
+  </div>
+  <!--単語の表示ここまで-->
+  
+  <div id="div_space"></div>
+  
+  <!--スタートとリセットここから-->
+  <div id="button_left">
+  	<a><button id="btn_start" onClick="hogeStart()">
+  	<i class="icon-white icon-play"></i> 　スタート　</button></a>
+  </div>
+  
+  <div id="button_right">
+  <a><button id="btn_reset" onClick="init()">
+  <i class="icon-white icon-repeat"></i> 　リセット　</button></a>
+  </div>
+  <!--スタートとリセットここまで-->
+
+</div>
+<!--ゲーム画面全体ここまで-->
+
+<!--入力結果の表示ここから-->
+<div id="result">
+  <div class="box_result">
+  <li>成功数：<span id="success">0</span></li>
+  <li>失敗数：<span id="failed">0</span></li>
+  <li>最大コンボ数：<span id="maxCombo">0</span></li>
+  <li><button id="btn_result" onClick="result()"><i class="icon-white icon-ok"></i>　OK </button></li>  
+  </div>
+</div>
+<!--入力結果の表示ここまで-->
+
+<div class="back_manual"><a href="manual.html">▼マニュアルに戻る</a></div>
 
 </body>
 </html>
