@@ -1,0 +1,33 @@
+@charset "utf-8";
+/* CSS Document */
+
+* {
+	margin: 0px;
+	border: none;
+	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}
+
+#div_game {
+	margin-top: -80px;
+	width: 1000px;
+	height: 400px;
+	background:#FFF;
+	font-size: 36px;
+	text-align: right;
+	font-weight:bold;
+	color:#FFF;
+}
+
+a{/*リンクされた文字*/
+	color:#000;
+	text-shadow: 5px 5px 5px gray;
+	text-decoration:none;
+}
+a:hover {/*マウスをのせたとき*/
+	color:#FFF;
+	text-decoration:underline;
+}
+a:active {/*クリック中*/
+	color:#000;
+	text-decoration:none;
+}

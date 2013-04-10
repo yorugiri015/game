@@ -1,0 +1,241 @@
+﻿@charset "utf-8";
+/* CSS Document */
+
+* {
+	margin: 0px auto;
+	border: none;
+	list-style: none;
+}
+
+/*スクロールを禁止*/
+body { overflow-y: hidden; }
+
+/*半角英数で入力*/
+input.example {
+	ime-mode: inactive;
+}
+
+/*コルクボード部分*/
+#div_wrap {
+	width: 1200px;
+	height: 650px;
+	background:url(../img/back.jpg);
+}
+
+/*【左】カラム*/
+#div_left {
+	margin: 25px;
+	float: left;
+	width: 800px;
+	height: 600px;
+}
+
+/*メンバーのアイコン表示div*/
+#div_members {
+	margin-top: -35px;
+	width: 780px;
+	height: 100px;
+}
+
+/*問題表示div*/
+#div_qst {
+	margin-top: 73px;
+	width: 780px;
+	height: 350px;
+	background:url(../img/back_q.png) no-repeat;
+	-webkit-box-shadow: 1px 1px 3px 1px rgba(0,0,0,0.4);
+}
+
+#div_qst_num {
+	margin: 10px auto 50px 20px;
+	padding-top: 10px;
+	width: 200px;
+	height: 60px;
+	font-size: 18px;
+	text-decoration:underline;
+	font-family:"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック";
+}
+
+#q_num {
+	font-size: 24px;
+}
+
+
+#jp_word {
+	margin-bottom: 10px;
+	width: 300px;
+	height: 50px;
+	font-size: 24px;
+	text-align: center;
+	font-family:"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック";
+}
+
+#word {
+	margin-bottom: 30px;
+	width: 700px;
+	height: 80px;
+	text-align: center;
+	font-size: 50px;
+}
+
+#input_word {
+	width: 40px;
+	height: 40px;
+	font-size:25px;
+	color:#F00;
+	margin-top:-65px;
+	marrin-left:-55px; /*適当*/
+}
+
+/*ボタン表示div*/
+#div_btn {
+	margin-top: 10px;
+	width: 590px;
+	height: 130px;
+	background: url(../img/btn_tape.png) no-repeat;
+}
+
+#btn_start {
+	padding:0;
+	background-color: transparent;
+	border:0;
+	font-size:0;
+	line-height:0;
+	cursor:pointer;
+	overflow: visible;
+}
+
+#btn_reset {
+	padding:0;
+	background-color: transparent;
+	border:0;
+	font-size:0;
+	line-height:0;
+	cursor:pointer;
+}
+
+#div_btn img {
+	max-height: 100px;
+	max-width: 230px;
+	margin: 17px 30px;
+}
+
+/*【右】カラム*/
+#div_right {
+	margin: 25px;
+	float: right;
+	width: 300px;
+	height: 660px;
+}
+
+/*時計div*/
+#div_watch {
+	width: 200px;
+	height: 220px;
+	background:url(../img/watch.png);
+	margin: -50px auto 10px auto;
+}
+
+#div_watch_in {
+	padding-top: 80px;
+	margin-left: 45px;
+	width: 100px;
+	height: 140px;
+	font-size: 90px;
+	font-family: "Times New Roman", Times, serif;
+	text-align: center;
+}
+
+/*コンボ表示div*/
+#div_combo {
+	margin: -20px auto 10px auto;
+	width: 280px;
+	height: 180px;
+	background: url(../img/cmb_back.png);
+}
+
+#div_combo_txt {
+	padding-top: 50px;
+	width: 200px;
+	height: 100px;
+	text-align: right;
+	font-size: 30px;
+	font-family:"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック";
+}
+
+/*キャラクター表示div*/
+#div_chara {
+	margin-top: 10px;
+	width: 170px;
+	height: 190px;
+	background: #FFF;
+	-webkit-box-shadow: 1px 3px 3px 2px rgba(0,0,0,0.4);
+}
+
+#div_chara_pic {
+	padding-top: 10px;
+	width: 150px;
+	height: 160px;
+}
+
+#div_chara_pic img {
+	max-width: 150px;
+	max-height: 150px;
+	border: 1px #CCC solid;
+}
+
+#div_chara_pin {
+	margin-top: -205px;
+	margin-bottom: 165px;
+	width: 40px;
+	height: 40px;
+}
+
+/*「あるばむへ」div*/
+#div_toalbum {
+	width: 250px;
+	height: 80px;
+}
+
+
+/*入力結果*/
+#result {
+	clear: both;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	margin: -650px 50px 0px auto;
+	background-color:#000;
+	color: #000;
+	opacity: 0.8;
+	display: none;
+}
+
+.box_result {
+	margin: 200px auto 0px auto;
+	width: 300px;
+	height: 290px;
+	background: url(../img/back_q.png);
+}
+
+#btn_result {
+	font-size: 14px;
+	color: #ffffff;
+	padding: 10px 15px;
+	background: -webkit-gradient(
+	linear, left top, left bottom, 
+	from(#69C),
+	to(#36C ));
+	border-radius: 5px;
+	border: 1px solid #009;
+	text-shadow:
+	1px -1px 0px rgba(189,93,10,0.3),
+	0px 1px 0px rgba(255,255,255,0.4);	
+}
+
+#result li {
+	padding: 20px 20px 20px 20px;
+	font-size: 30px;
+}
+
+

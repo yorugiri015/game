@@ -1,0 +1,344 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<title>タイピングゲーム！</title>
+<script type="text/javascript" src="lib/jquery.js"></script>
+<script type="text/javascript" src="lib/jquery.alerts.js"></script>
+<link href="css/typing.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="css/jquery.alerts.css" type="text/css" />
+
+
+<script language="javascript">
+	var Successful_count = 0;		//成功数
+	var Failure_count = 0;			//失敗数
+	var Count = 00;					//問題数
+	var Combo = 0;					//コンボ数（成功単語数）
+	var Max_Combo = 0;				//最大コンボ数
+	var Timer_Start = 60;          	//タイマの開始値 デフォルト６０
+	var Timer      = Timer_Start   	//カウントダウンタイマ
+	var Wait       = 1000;        	//待ち時間（ミリ秒）
+	var Index;					  	//語句配列用変数
+	var Timer_Flag = true;			//タイマーが動いているか管理（true：停止　false：動作）
+	var Reset_Flag = true;			//リセットボタンが押されたか管理
+	var Combo_Flag = true;
+
+	var Type = null;
+	var Type_Jp = null;
+	
+	var Ratio12 = 1.2;
+	var Ratio15 = 2.0;
+	var Ratio20 = 3.5;
+	
+	var Point = 0;							//経験値のおおもと仮変数
+
+	//タイピング配列
+	function Array_Typing(){		
+		Type = new Array(	
+			"ORANGE","CHERRY","BANANA","APPLE","GRAPE",
+			"MUSCAT","MELON","PEACH","LEMON","COCONUT",
+			"DURIAN","PAPAYA","MANGO","AVOCADO","APRICOT",
+			"KIWI","YUZU","LIME","AYEAYE","RACCOON",
+			"DOG","RABBIT","HORSE","BULL","WOLF",
+			"ORANGUTAN","ROOSTER","PLATYPUS","KANGAROO","FOX",
+			"GIRAFFE","BEAR","KOALA","PUPPY","KITTEN",
+			"COYOTE","GORILLA","MONKEY","DEER","ZEBRA",
+			"CHIPMUNK","BUFFALO","SKUNK","ELEPHANT","RAT",
+			"TIGER","SLOTH","COW","CAT","HYENA",
+			"MOUSE","HAMSTER","HEDGEHOG","PANDA","BEAVER",
+			"SHEEP","BABOON","LEOPARD","FERRET","OPOSSUM",
+			"PIG","HEN","MOLE","GOAT","PORCUPINE",
+			"LION","CAMEL","LLAMA","SQUIRREL","DONKEY",
+			"STRAWBERRY" , "GRAPEFRUIT", "PINEAPPLE" , "WATERMELON" , "RASPBERRY" ,
+			"BLUEBERRY" , "MUSKMELON" , "PERSIMMON" , "POMEGRANATE" ,
+			"CAULIFLOWER" ,"AFGHANISTAN","NETHERLANDS" ,
+			"LUXEMBOURG" , "PHILIPPINES" ,"KAZAKHSTAN" ,
+			 "MADAGASCAR","VENEZUELA","SKATEBOARDING" ,
+			"CHEERLEADING","RACEWALKING","SNOWMOBILING","TOURNAMENT",
+			"ARMADILLO","HIPPOPOTAMUS","RHINOCEROS" ,"CHIMPANZEE",
+			"COMMEMORATION","CONSTELLATION","CHRYSANTHEMUM","RHODODENDRON",
+			"WOODPECKER","AESTHETICIAN","SMORGASBORD","SALAMANDER",
+			"ANNOUNCER","BULLDOZER","MOTORCYCLE","THOROUGHBRED","RATTLESNAKE",
+			"NORTH","SOUTH","WEST","EAST","NORTHEAST","SOUTHEAST","SOUTHWEST","NORTHWEST",
+			"OBOE","OCARINA","CASTANETS","KEYBOARDS","GUITAR",
+			"CONTRABASS","SYNTHESIZER","TAMBOURINE","CELLO","TIMPANI",
+			"HARMONICA","MARIMBA","METRONOME","VIOLIN","TROMBONE"
+		);
+	
+		Type_Jp = new Array(		
+			"みかん","さくらんぼ","ばなな","りんご","ぶどう",
+			"マスカット","メロン","もも","レモン","ココナッツ",
+			"ドリアン","パパイヤ","マンゴー","アボカド","アプリコット",
+			"キウイ","ゆず","ライム","アイアイ","アライグマ",
+			"犬","うさぎ","馬","雄牛","オオカミ",
+			"オランウータン","雄鶏","カモノハシ","カンガルー","キツネ",
+			"キリン","熊","コアラ","子犬","子猫",
+			"コヨーテ","ゴリラ","猿","シカ","シマウマ",
+			"シマリス","スイギュウ","スカンク","ゾウ","ネズミ",
+			"トラ","ナマケモノ","乳牛","ネコ","ハイエナ",
+			"ハツカネズミ","ハムスター","ハリネズミ","パンダ","ビーバー",
+			"ヒツジ","ヒヒ","ヒョウ","フェレット","フクロネズミ",
+			"豚","雌鳥","モグラ","ヤギ","ヤマアラシ",
+			"ライオン","ラクダ","ラマ","リス","ロバ",
+			"いちご", "グレープフルーツ", "パイナップル", "スイカ","ラズベリー",
+			"ブルーベリー", "マスクメロン" , "柿", "ザクロ" ,
+			"カリフラワー", "アフガニスタン","オランダ",
+			"ルクセンブルク","フィリピン","カザフスタン",
+			"マダガスカル","ベネズエラ","スケートボード",
+			"チアリーディング","競歩","スノーモービル","トーナメント",
+			"アルマジロ" , "カバ","サイ","チンパンジー" ,
+			"記念","星座","菊","シャクナゲ",
+			"キツツキ","エステティシャン","バイキング","サンショウウオ",
+			"アナウンサー","ブルドーザー","オートバイ","サラブレッド","ガラガラヘビ",
+			"北","南","西","東","北東","南東","南西","北西",
+			"オーボエ","オカリナ","カスタネット","キーボード","ギター",
+			"コントラバス","シンセサイザー","タンバリン","チェロ","ティンパニ",
+			"ハーモニカ","マリンバ","メトロノーム","バイオリン","トロンボーン"
+			
+		);
+	}
+
+	
+	//変数初期化と表示
+	function Variable_Declaration(){
+		word.innerHTML = "sample";						//乱数で選ばれた問題配列の中の１つをラベルに
+		jp_word.innerHTML = "サンプル";					//日本語
+		$('#input_word').hide();
+		Timer = 0;
+		Combo = 0;
+		Count = 0;
+		Point = 0;
+  		q_num.innerHTML = ('00' + Count).slice(-2);	
+		combocount.innerHTML = Combo; 
+		success.innerHTML = Successful_count;
+  		failed.innerHTML = Failure_count;
+		maxCombo.innerHTML = Max_Combo;
+		point.innerHTML = Point;
+
+	}
+	
+	//初期状態とリセットボタンが押されたとき
+	function init() {
+		Array_Typing();
+		Variable_Declaration();
+		Successful_count = 0;	/*	この３つは				*/
+		Failure_count = 0;		/*	Variable_Declaration()に書くと	*/
+		Max_Combo = 0;			/*	resultが間抜けになる	*/
+		clearTimeout();
+		Timer_Flag = true;
+		Reset_Flag = false;
+	}
+
+//キーが押されたときの処理
+	function keyDown() {
+		var Text = word.innerHTML;	
+		var Text_Jp = jp_word.innerHTML;				
+		var Code = Text.substring(0,1);					//Text（問題）の１文字目の文字コードを参照
+		var Chr = String.fromCharCode(event.keyCode);	//入力されたキーコードを文字列に
+		input_word.innerHTML = 	Chr;
+		
+		if(Timer >= 0 && Timer_Flag == false){			//まだ時間が残っているなら
+		
+			if (Chr == Code) {							//押されたキーとCode（正解）が真なら
+    			$('#input_word').hide();
+				Text = Text.substring(1, Text.length);	
+
+    			if (Text.length == 0) {					//Text（問題）の長さが０なら
+					if(Combo_Flag == false)
+						Combo = 0;
+					else{
+						Combo++;	
+						if(Combo > Max_Combo){			//コンボ数更新
+							Max_Combo = Combo;
+							maxCombo.innerHTML = Max_Combo;	
+						}
+						
+						
+						if(Combo < 12)			//～１１までのコンボ数での得点
+							Point = Point + 1;							
+						else if(Combo <= 14) 	//１２～１４コンボまでの得点
+							Point = Math.ceil(Point + 1 * Ratio12);
+						
+						else if(Combo <= 19) 	//１５～１９コンボまでの得点
+							Point = Math.ceil(Point + 1 * Ratio15);
+
+						else if(Combo >= 20)	//２０～コンボ得点
+							Point = Math.ceil(Point + 1 * Ratio20);
+						
+						point.innerHTML = Point;
+						
+					}
+					Text = Question();						//次の問題を作る
+					Text_Jp = Question_Jp();				//次の問題を作る(日本語)
+					Count++;	
+					Combo_Flag = true;
+				}
+    		word.innerHTML = Text;						//問題を表示
+			jp_word.innerHTML = Text_Jp;  				//問題を表示(日本語)
+    		Successful_count++;							//正解数
+  			}else if (Chr != Code){					//打ち間違い時の処理
+				$('#input_word').show();				//間違って打った文字を表示
+  				Failure_count++;						//失敗数
+				Combo = 0;
+				Combo_Flag = false;						//コンボリセット
+			}
+		}
+	
+		combocount.innerHTML = Combo;					//コンボ数を更新
+  		success.innerHTML = Successful_count;			//正解数を更新
+  		failed.innerHTML = Failure_count;				//失敗数を更新
+   		q_num.innerHTML = ('00' + Count).slice(-2);		//問題数を更新
+	}
+	
+	
+	//次の問題を作る	
+	function Question() {
+		Index = Math.floor(Math.random() * (Type.length - 1));	//乱数生成
+  		return Type[Index];										//問題配列[乱数]
+	}
+	
+	//次の問題を作る(日本語)
+	function Question_Jp() {	
+		return Type_Jp[Index];								//日本語の問題配列[乱数]
+	}
+	
+	//タイマースタート
+	function Start() {
+		if(Timer_Flag == true){
+			Variable_Declaration();		
+			Successful_count = 0;	/*	この３つは				*/
+			Failure_count = 0;		/*	Variable_Declaration()に書くと	*/
+			Max_Combo = 0;			/*	resultが間抜けになる	*/
+			Count++;
+	 		q_num.innerHTML = ('00' + Count).slice(-2);	
+			word.innerHTML = Question();						
+			jp_word.innerHTML = Question_Jp();					
+		   	Timer = Timer_Start;
+			Timer_Flag = false;
+			Reset_Flag = true;
+    		setTimeout(Count_Down, Wait);
+		}else{
+			//タイマーフラグがたってるから何もしない（スタートボタン連打対策）
+		}
+	}
+	
+	//カウントダウン
+	function Count_Down() {
+   		if (Timer <= 0) {
+			Timer_Flag = true;
+			time.innerHTML = '0';
+        	clearTimeout();
+			Timeout();										//アラート表示
+    	} else {
+			time.innerHTML = Timer--;
+        	setTimeout(Count_Down, Wait);
+    }
+	
+	//タイムアップ
+	function Timeout(){
+		if(Timer_Flag == true && Reset_Flag == true){
+			$("#result").fadeIn(3000);
+			success.innerHTML = Successful_count;
+			failed.innerHTML = Failure_count;
+			maxCombo.innerHTML = Max_Combo;
+			result_point.innerHTML = Point;
+			
+			jAlert('ゲーム終了だぞｍ9っ｀Д´)', 'ゲーム終了！');
+		
+			$('#btn_result').click(function(){
+				$('#result').fadeOut(1000);
+				Variable_Declaration();
+			});
+		}
+	}
+	
+	function Album(){		//アルバム機能（※未実装）
+		var Lv_Cookies01 = false;
+		var Lv_Cookies02 = false;
+		var Lv_Cookies03 = false;
+		var Lv_Cookies04 = false;
+		var Lv_Cookies05 = false;
+		
+		//	・経験値がレベル１の条件を満たしたら、Lv_Cookies01はtrueになる
+		//	・その他レベル、変数も同様
+		//	・cookieで保存
+		
+	}
+
+}
+</script>
+</head>
+
+<body onkeydown="keyDown()" onLoad="init()">
+
+<div id="div_wrap">
+
+	<div id="div_left">
+
+  	<div id="div_members">
+    <img src="img/member.png">
+    </div>
+    
+    <div id="div_qst">
+    
+    <!--問題数の表示ここから-->
+    	<div id="div_qst_num">
+		    第<span id="q_num"></span>問
+  	<!--問題数の表示ここまで--></div>
+  
+        <div id="jp_word"></div>
+    		<div id="word"></div>
+    		<div id="input_word"></div>
+   </div>
+    
+    <div id="div_btn">
+    <button id="btn_start" onClick="Start()"><img src="img/btn_start.png"></button>
+		<button id="btn_reset" onClick="init()"><img src="img/btn_rest.png"></button> 
+    </div>
+
+  </div>
+
+<!--右カラム-->
+  <div id="div_right">
+  
+  	<div id="div_watch">
+    	<div id="div_watch_in">
+      	<span id="time">0</span>
+      </div>
+    </div>
+    
+    <div id="div_combo">
+    	<div id="div_combo_txt">
+      	<span id="combocount"></span> コンボ！<br>
+        <span id="point"></span>点！
+      </div>   	
+    </div>
+    
+    <div id="div_chara">      
+      <div id="div_chara_pic"><img src="img/chara_01.gif"></div>   
+    </div>
+    <div id="div_chara_pin"><img src="img/pin.png"></div>
+    
+    <div id="div_toalbum">
+    	<img src="img/to_album.png">
+    </div>
+  </div>
+ 
+</div>
+
+<!--入力結果の表示ここから-->
+<div id="result">
+  <div class="box_result">
+  <li>成功数：<span id="success">0</span></li>
+  <li>失敗数：<span id="failed">0</span></li>
+  <li>最大コンボ数：<span id="maxCombo">0</span></li>
+  <li>点数：<span id="result_point">0</span></li>  
+  <li><button id="btn_result" onClick="result()"><i class="icon-white icon-ok"></i>  OK </button></li>  
+  </div>
+</div>
+<!--入力結果の表示ここまで-->
+
+
+</body>
+</html>
